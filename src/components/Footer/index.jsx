@@ -86,7 +86,7 @@ function Footer() {
             rel="noreferrer"
             href="https://github.com/Kvadeck"
           >
-            Nikolai Voljenin
+            Nikolay Volzhenin
           </a>
           <a
             className={classes.gitHubLink}
