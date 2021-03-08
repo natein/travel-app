@@ -5,11 +5,9 @@ function NotFound() {
   let location = useLocation();
 
   return (
-    <>
       <h1>
         Not found for {location.pathname}
       </h1>
-    </>
   );
 }
 

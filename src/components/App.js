@@ -11,7 +11,6 @@ import NotFound from './NotFound';
 function App() {
   return (
     <Router>
-      <>
         <CssBaseline />
         <Container>
           <Header />
@@ -22,7 +21,6 @@ function App() {
           </Switch>
           <Footer />
         </Container>
-      </>
     </Router>
   );
 }
