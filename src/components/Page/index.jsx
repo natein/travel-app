@@ -1,11 +1,3 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import PageContainer from './PageContainer';
 
-function Country() {
-    const { isoCode } = useParams();
-    return (
-        <h3>Country {isoCode}</h3> 
-    );
-  }
-  
-export default Country;
+export default PageContainer;
