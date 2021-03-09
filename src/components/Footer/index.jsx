@@ -54,56 +54,57 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Footer() {
-  const classes = useStyles();
-  return (
-    <footer className={classes.root}>
-      <Toolbar className={classes.toolBar}>
-        <IconButton>
-          <a target="_blank" rel="noreferrer" href="https://rs.school/js/">
-            <img className={classes.logo} src={img} alt="RSS" />
-          </a>
-        </IconButton>
-        <div className={classes.gitHubList}>
-          <a
-            className={classes.gitHubLink}
-            target="_blank"
-            rel="noreferrer"
-            href="https://github.com/spaceragga"
-          >
-            Ivan Mikhalchanka
-          </a>
-          <a
-            className={classes.gitHubLink}
-            target="_blank"
-            rel="noreferrer"
-            href="https://github.com/aleksei-bulgak-study"
-          >
-            Aleksei Bulgak
-          </a>
-          <a
-            className={classes.gitHubLink}
-            target="_blank"
-            rel="noreferrer"
-            href="https://github.com/Kvadeck"
-          >
-            Nikolay Volzhenin
-          </a>
-          <a
-            className={classes.gitHubLink}
-            target="_blank"
-            rel="noreferrer"
-            href="https://github.com/natein"
-          >
-            Natalija Natein
-          </a>
-        </div>
-        <Typography variant="h6" noWrap>
-          2021
-        </Typography>
-      </Toolbar>
-    </footer>
-  );
+const developers = [
+    {
+        fullname: 'Ivan Mikhalchanka',
+        github: 'https://github.com/spaceragga',
+    },
+    {
+        fullname: 'Aleksei Bulgak',
+        github: 'https://github.com/aleksei-bulgak-study',
+    },
+    {
+        fullname: 'Nikolai Voljenin',
+        github: 'https://github.com/Kvadeck',
+    },
+    {
+        fullname: 'Natalija Natein',
+        github: 'https://github.com/natein',
+    },
+];
+
+const DeveloperElement = ({ className, github, fullname }) => (
+    <a className={className} target="_blank" rel="noreferrer" href={github}>
+        {fullname}
+    </a>
+);
+
+function Footer({className}) {
+    const classes = useStyles();
+    return (
+        <footer className={`${classes.root} ${className}`}>
+            <Toolbar className={classes.toolBar}>
+                <IconButton>
+                    <a target="_blank" rel="noreferrer" href="https://rs.school/js/">
+                        <img className={classes.logo} src={img} alt="RSS" />
+                    </a>
+                </IconButton>
+                <div className={classes.gitHubList}>
+                    {developers.map((developer) => (
+                        <DeveloperElement
+                            key={developer.fullname}
+                            className={classes.gitHubLink}
+                            fullname={developer.fullname}
+                            github={developer.github}
+                        />
+                    ))}
+                </div>
+                <Typography variant="h6" noWrap>
+                    {new Date().getFullYear()}
+                </Typography>
+            </Toolbar>
+        </footer>
+    );
 }
 
 export default Footer;
