@@ -1,8 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
 import Container from '@material-ui/core/Container';
 
 import img from "../../assets/rs_school_1.svg";
@@ -12,16 +10,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     color: "white",
     padding: theme.spacing(3, 0),
-    marginTop: theme.spacing(4),
   },
   footerContainer: {
     justifyContent: 'center',
     alignItems: 'center'
   },
   date: {
-    textAlign: 'right',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
     [theme.breakpoints.down("sm")]: {
-      textAlign: 'center',
+      justifyContent: 'center',
     },
   },
   gitHubLink: {
@@ -30,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
   },
   gitHubList: {
     display: "flex",
+    flexGrow: 1,
+    alignItems: 'center',
     justifyContent: "space-between",
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
@@ -86,8 +87,7 @@ function Footer({ className }) {
               <img className={classes.logo} src={img} alt="RSS" />
             </a>
           </Grid>
-          <Grid item xs={12} md={8}>
-            <div className={classes.gitHubList}>
+          <Grid item xs={12} md={8} className={classes.gitHubList}>
               {developers.map((developer) => (
                 <DeveloperElement
                   key={developer.fullname}
@@ -96,10 +96,9 @@ function Footer({ className }) {
                   github={developer.github}
                 />
               ))}
-            </div>
           </Grid>
           <Grid item xs={12} md={2} className={classes.date}>
-            &copy; {new Date().getFullYear()}
+            {new Date().getFullYear()}
           </Grid>
         </Grid>
       </Container>
