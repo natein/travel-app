@@ -17,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '40vh',
     },
 
-    mainGrid: {
-        marginTop: theme.spacing(10),
-    },
-
     descriptionGrid: {
         padding: theme.spacing(0, 10, 0, 0),
     },
@@ -44,7 +40,7 @@ function Country({ country }) {
     const classes = useStyles();
 
     return (
-        <Box className={classes.mainGrid}>
+        <Box>
             <Typography variant="h3" gutterBottom>
                 {country.name}
             </Typography>
