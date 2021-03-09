@@ -5,7 +5,7 @@ export const sightsCollection = {
       id: "1a958982-c560-4d64-97fb-6d6d891b6c1a",
       name: "Berlin Victory Column",
       description:
-        "The Victory Column (German: About this soundSiegessäule (help·info), from Sieg ‘victory’ + Säule ‘column’) is a monument in Berlin, Germany.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, eaque numquam debitis ipsam quod, dolorem cumque, quisquam voluptates fugit sapiente non vitae et eos voluptatum beatae dignissimos nulla praesentium incidunt?",
       image: "https://source.unsplash.com/t20pc32VbrU/800x600",
       rating: [],
     },
@@ -14,7 +14,7 @@ export const sightsCollection = {
       id: "30a93359-82b5-4276-9a97-285d5a54e335",
       name: "Reichstag building",
       description:
-        "The Reichstag (German: Reichstagsgebäude [ˈʁaɪçstaːksɡəˌbɔʏdə]; officially: Deutscher Bundestag – Plenarbereich Reichstagsgebäude [ˈdɔʏtʃɐ ˈbʊndəsˌtaːk ˈpleːnaːɐ̯bəˌʁaɪç ˈʁaɪçstaːksɡəˌbɔʏdə]) is a historic edifice in Berlin, Germany, constructed to house the Imperial Diet (German: Reichstag) of the German Empire.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, eaque numquam debitis ipsam quod, dolorem cumque, quisquam voluptates fugit sapiente non vitae et eos voluptatum beatae dignissimos nulla praesentium incidunt?",
       image: "https://source.unsplash.com/2Bjq3A7rGn4/800x600",
       rating: [],
     },
@@ -23,15 +23,24 @@ export const sightsCollection = {
       id: "56d9d51c-146b-41a6-a2c1-271e90039578",
       name: "Brandenburg Gate",
       description:
-        "The Brandenburg Gate (German: Brandenburger Tor; [ˈbʁandn̩bʊɐ̯gɐ ˈtoːɐ̯]) is an 18th-century neoclassical monument in Berlin, built on the orders of Prussian king Frederick William II after the temporary restoration of order during the Batavian Revolution.",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, eaque numquam debitis ipsam quod, dolorem cumque, quisquam voluptates fugit sapiente non vitae et eos voluptatum beatae dignissimos nulla praesentium incidunt?",
       image: "https://source.unsplash.com/3Z70SDuYs5g/800x600",
+      rating: [],
+    },
+    {
+      _id: "6045cbe836df7e353389d4d3",
+      id: "56d9d51c-146b-41a6-a2c1-271e90039578",
+      name: "Brandenburg Gate",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, eaque numquam debitis ipsam quod, dolorem cumque, quisquam voluptates fugit sapiente non vitae et eos voluptatum beatae dignissimos nulla praesentium incidunt?",
+      image: "https://source.unsplash.com/uOi3lg8fGl4/800x600",
       rating: [],
     },
   ],
 };
 
 export const styles = {
-  root: {
+  card: {
     maxWidth: 345,
   },
   media: {
@@ -40,4 +49,39 @@ export const styles = {
   content: {
     height: 180,
   },
+  icon: {
+    fontSize: "2.5rem",
+  },
+};
+
+export const arrowWrap = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  mt: "20px",
+  spacing: 2,
+};
+
+export const arrowInner = {
+  display: "flex",
+  alignItems: "center",
+  mx: "20px",
+  component: "div",
+};
+export const titleWrap = {
+  display: "flex",
+  justifyContent: "center",
+  mt: "40px",
+};
+
+export const SightsListWrap = {
+  display: "flex",
+  justify: "center",
+  alignItems: "center",
+  spacing: 2,
+};
+
+export const sightsBtn = {
+  variant: "outlined",
+  color: "primary",
 };
