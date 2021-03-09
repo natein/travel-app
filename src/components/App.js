@@ -16,21 +16,23 @@ function App() {
         <Provider store={store}>
             <Router>
                 <CssBaseline />
-                <Container>
-                    <Header />
-                    <Switch>
-                        <Route path="/countries" component={Home} exact />
-                        <Route path="/countries/:isoCode" component={Country} />
-                        <Route exact path="/">
-                            <Redirect to="/countries" />
-                        </Route>
+                <Header />
+                <main style={{ minHeight: `calc(100vh - 195px)`, marginTop: '85px' }}>
+                    <Container maxWidth="lg">
+                        <Switch>
+                            <Route path="/countries" component={Home} exact />
+                            <Route path="/countries/:isoCode" component={Country} />
+                            <Route exact path="/">
+                                <Redirect to="/countries" />
+                            </Route>
 
-                        <Route path="*">
-                            <NotFound />
-                        </Route>
-                    </Switch>
-                    <Footer />
-                </Container>
+                            <Route path="*">
+                                <NotFound />
+                            </Route>
+                        </Switch>
+                    </Container>
+                </main>
+                <Footer />
             </Router>
         </Provider>
     );

@@ -13,10 +13,7 @@ const useStyles = makeStyles({
     root: {
         maxWidth: 345,
         margin: '0 auto',
-    },
-    container: {
-        marginTop: '85px',
-    },
+    }
 });
 
 function Home({ countries, onPreview }) {
@@ -24,9 +21,9 @@ function Home({ countries, onPreview }) {
 
     return (
         <>
-            <Grid container spacing={2} className={classes.container}>
+            <Grid container spacing={4}>
                 {countries.map((country) => (
-                    <Grid item xs={12} sm={6} md={4} key={country.isoCode}>
+                    <Grid item xs={12} sm={6} md={3} key={country.isoCode}>
                         <Card className={classes.root}>
                             <CardActionArea>
                                 <CardMedia
