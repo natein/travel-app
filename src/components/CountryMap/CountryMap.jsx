@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import mapboxgl from 'mapbox-gl';
 import PropTypes from 'prop-types';
-import { Box } from '@material-ui/core';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
