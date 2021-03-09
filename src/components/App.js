@@ -29,7 +29,7 @@ function App() {
                             <NotFound />
                         </Route>
                     </Switch>
-                    <Footer />
+                    {/* <Footer /> */}
                 </Container>
             </Router>
         </Provider>

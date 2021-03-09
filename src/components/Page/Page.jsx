@@ -1,6 +1,7 @@
 import { Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
-import CountryMap from '../CountryMap';
+import SightGallery from './SightGallery';
+import CountryMap from '../CountryMap'
 
 const useStyles = makeStyles({
     container: {
@@ -16,11 +17,14 @@ const useStyles = makeStyles({
 
 function Country({ country }) {
     const classes = useStyles();
-
     return (
         <Grid container spacing={2} className={classes.container} direction="column">
+            
             <h3>Country {country.isoCode}</h3>
             <CountryMap className={classes.countryMap} />
+
+            <SightGallery data={country} />
+
         </Grid>
     );
 }
