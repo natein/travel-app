@@ -1,16 +1,23 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import * as countryActions from '../../actions/countryActions';
 import Page from './Page';
 
-const PageContainer = ({ loader, locale = 'en', country, onLoadCountry }) => {
+const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error }) => {
     const { isoCode } = useParams();
+    const history = useHistory();
 
     useEffect(() => {
         onLoadCountry(isoCode);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        if (error) {
+            history.push('/not-found');
+        }
+    }, [error, history]);
 
     return (
         <>
@@ -24,6 +31,7 @@ const mapStateToProps = (state) => ({
     loader: state.loader,
     country: state.country,
     locale: state.locale,
+    error: state.error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
