@@ -11,6 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LanguageSelector from './LanguageSelector';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -79,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Header() {
+function Header({countries}) {
     const classes = useStyles();
 
     const match = useRouteMatch({
@@ -123,3 +124,9 @@ export default function Header() {
         </AppBar>
     );
 }
+
+const mapStateToProps = (state) => ({
+    countries: state.countries
+});
+
+export default connect(mapStateToProps)(Header);
