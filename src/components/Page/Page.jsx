@@ -5,12 +5,9 @@ import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import CountryMap from '../CountryMap';
 import WidgetDate from '../WidgetDate';
+import SightGallery from '../Page/SightGallery';
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        marginTop: '85px',
-    },
-
     countryMap: {
         overflow: 'hidden',
         position: 'relative',
@@ -28,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     image: {
-        width: '100%'
+        width: '100%',
     },
 
     capital: {
@@ -50,9 +47,7 @@ function Country({ country }) {
                     <Typography className={classes.capital}>
                         <b>Столица:</b> {country.capital.name}
                     </Typography>
-                    <Typography gutterBottom>
-                        {country.description}
-                    </Typography>
+                    <Typography gutterBottom>{country.description}</Typography>
                 </Grid>
 
                 <Grid item xs={12} md={3}>
@@ -68,11 +63,15 @@ function Country({ country }) {
                         <WidgetDate />
                     </Paper>
                 </Grid>
-
-                <Grid container className={classes.container} direction="column">
-                    <CountryMap className={classes.countryMap} />
-                </Grid>
             </Grid>
+
+            <Box my={5}>
+                <SightGallery title={'Достопримечательности'} data={country} />
+            </Box>
+
+            <Box my={5}>
+                <CountryMap className={classes.countryMap} />
+            </Box>
         </Box>
     );
 }
