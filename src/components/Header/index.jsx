@@ -114,6 +114,8 @@ function Header({countries}) {
                                 <SearchIcon />
                             </div>
                             <InputBase
+                                autoFocus={true}
+                                autoComplete="false"
                                 placeholder="Countries..."
                                 classes={{
                                     root: classes.inputRoot,
