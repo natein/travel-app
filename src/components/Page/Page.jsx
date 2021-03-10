@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import CountryMap from '../CountryMap';
 import WidgetDate from '../WidgetDate';
-import SightGallery from '../Page/SightGallery';
+import SightGallery from './SightGallery';
 
 const useStyles = makeStyles((theme) => ({
     countryMap: {
@@ -66,7 +66,7 @@ function Country({ country }) {
             </Grid>
 
             <Box my={5}>
-                <SightGallery title={'Достопримечательности'} data={country} />
+                <SightGallery/>
             </Box>
 
             <Box my={5}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { galleryOptions } from './constants';
 import ImageGallery from 'react-image-gallery';
 import { sightGalleryDataAdapter } from '../../../helpers';
 import 'react-image-gallery/styles/css/image-gallery.css';
@@ -10,7 +9,14 @@ import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 
 import { makeStyles } from '@material-ui/core';
 
-function SightGallery({ title, data: { sights: galleryData } }) {
+function SightGallery({ title, data: { sights: sightsData } }) {
+
+    const galleryOptions = {
+        showPlayButton: false,
+        thumbnailPosition: 'right',
+        onErrorImageURL: 'https://picsum.photos/id/1015/1000/600/',
+    };
+
     const useStyles = makeStyles((theme) => ({
         icon: {
             [theme.breakpoints.down('sm')]: {
@@ -73,7 +79,7 @@ function SightGallery({ title, data: { sights: galleryData } }) {
                 renderRightNav={renderRightNav}
                 renderFullscreenButton={renderFullscreenButton}
                 {...galleryOptions}
-                items={sightGalleryDataAdapter(galleryData)}
+                items={sightGalleryDataAdapter(sightsData)}
             />
         </>
     );
