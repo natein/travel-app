@@ -6,12 +6,16 @@ const useStyles = makeStyles((theme) => ({
     select: {
         color: fade(theme.palette.common.white, 0.5),
         fontSize: '1rem',
-        padding: '8px 8px 8px 0px',
-        minWidth: '7rem',
+        padding: '8px',
+        minWidth: '5rem',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: fade(theme.palette.background.default, 0.15),
         border: 'none',
         outline: 'none',
+        appearance: 'none',
+        '&:hover': {
+            backgroundColor: fade(theme.palette.background.default, 0.4),
+        }
     },
     container: {
         display: 'flex',
