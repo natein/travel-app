@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router';
 import * as countryActions from '../../actions/countryActions';
 import * as currencyActions from '../../actions/currencyActions';
 import Page from './Page';
+import LoadingPage from '../LoadingPage';
 
 const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error, onLoadCurrency }) => {
     const { isoCode } = useParams();
@@ -13,7 +14,7 @@ const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error, o
         onLoadCountry(isoCode);
         onLoadCurrency('RUBUSD');
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [locale]);
 
     useEffect(() => {
         if (error) {
@@ -23,7 +24,7 @@ const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error, o
 
     return (
         <>
-            {loader && <h1>Loading data</h1>}
+            {loader && <LoadingPage />}
             {!loader && !!country && <Page country={country} />}
         </>
     );

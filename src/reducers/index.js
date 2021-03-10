@@ -26,6 +26,9 @@ const commonReducer = (state = initialState, action) => {
     case 'CURRENCY': {
       return { ...state, currency: action.payload };
     }
+    case 'LOCALE': {
+      return { ...state, locale: action.payload };
+    }
     default: {
       return state;
     }

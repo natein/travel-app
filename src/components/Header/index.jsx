@@ -1,23 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import InputBase from '@material-ui/core/InputBase';
+import { Link, useRouteMatch } from 'react-router-dom';
+
+import { AppBar, Toolbar, Button, IconButton, Typography, Container, InputBase } from '@material-ui/core';
+
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import LanguageSelector from './LanguageSelector';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2),
+    toolbar: {
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'space-between'
+        },
     },
     title: {
-        flexGrow: 1,
+        flexGrow: 3,
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
@@ -28,7 +28,13 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         fontSize: '18px',
     },
+    languageSwitch: {
+        flexGrow: 0,
+    },
     search: {
+        flexGrow: 1,
+        display: 'flex',
+        justifyContent: 'space-between',
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -52,8 +58,17 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    searchButton: {
+        color: 'white',
+        border: '2px solid rgba(255, 255, 255, 0.2)',
+        borderLeftColor: 'white',
+        '&:hover': {
+          border: 'none',
+        },
+    },
     inputRoot: {
         color: 'inherit',
+        flexGrow: '1',
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
@@ -73,37 +88,47 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Header() {
+function Header({countries}) {
     const classes = useStyles();
+
+    const match = useRouteMatch({
+        path: '/countries/:isoCode',
+        strict: true,
+        sensitive: true,
+    });
 
     const isUserLoggedIn = true;
 
     return (
         <AppBar position="fixed">
             <Container maxWidth="lg">
-                <Toolbar disableGutters>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
-                        <MenuIcon />
-                    </IconButton>
+                <Toolbar disableGutters className={classes.toolbar}>
                     <Typography className={classes.title} variant="h6" noWrap>
                         <Link className={classes.titleLink} to="/">
                             Travel App
                         </Link>
                     </Typography>
-
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
+                    {!match && (
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+                                <SearchIcon />
+                            </div>
+                            <InputBase
+                                placeholder="Countries..."
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'search' }}
+                                onChange={() => console.log('change')}
+                            />
+                            <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => console.log('search')}>
+                                Search
+                            </Button>
                         </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
+                    )}
+                    <LanguageSelector className={classes.languageSwitch} />
+
                     <IconButton className={classes.loginBtn}>
                         {isUserLoggedIn ? <AccountCircleIcon /> : <ExitToAppIcon />}
                     </IconButton>
@@ -112,3 +137,9 @@ export default function Header() {
         </AppBar>
     );
 }
+
+const mapStateToProps = (state) => ({
+    countries: state.countries
+});
+
+export default connect(mapStateToProps)(Header);
