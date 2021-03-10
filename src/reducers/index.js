@@ -5,26 +5,31 @@ const initialState = {
   searchString: '',
   loader: false,
   error: null,
+  currency: [],
+  currencySearch: ''
 };
 
 const commonReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case 'LOADER': {
-        return { ...state, loader: action.payload };
-      }
-      case 'ERROR': {
-        return { ...state, loader: false, error: action.payload };
-      }
-      case 'COUNTRIES': {
-        return { ...state, countries: [...action.payload] };
-      }      
-      case 'COUNTRY': {
-        return { ...state, country: action.payload };
-      }
-      default: {
-        return state;
-      }
+  switch (action.type) {
+    case 'LOADER': {
+      return { ...state, loader: action.payload };
     }
-  };
-  
-  export default commonReducer;
+    case 'ERROR': {
+      return { ...state, loader: false, error: action.payload };
+    }
+    case 'COUNTRIES': {
+      return { ...state, countries: [...action.payload] };
+    }
+    case 'COUNTRY': {
+      return { ...state, country: action.payload };
+    }
+    case 'CURRENCY': {
+      return { ...state, currency: action.payload };
+    }
+    default: {
+      return state;
+    }
+  }
+};
+
+export default commonReducer;

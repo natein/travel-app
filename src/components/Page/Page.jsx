@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import CountryMap from '../CountryMap';
 import WidgetDate from '../WidgetDate';
+import WidgetCurrency from '../WidgetCurrency';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -62,7 +63,7 @@ function Country({ country }) {
                     </Paper>
 
                     <Paper elevation={0} className={classes.widgetBox}>
-                        Курс валют
+                        <WidgetCurrency />
                     </Paper>
 
                     <Paper elevation={0} className={classes.widgetBox}>
