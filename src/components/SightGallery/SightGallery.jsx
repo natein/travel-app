@@ -1,16 +1,17 @@
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
-import { sightGalleryDataAdapter } from '../../../helpers';
+import { sightGalleryDataAdapter } from '../../helpers';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
+import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core';
 
 function SightGallery({ title, data: { sights: sightsData } }) {
-
+    
     const galleryOptions = {
         showPlayButton: false,
         thumbnailPosition: 'right',
@@ -84,4 +85,12 @@ function SightGallery({ title, data: { sights: sightsData } }) {
         </>
     );
 }
+
+
+SightGallery.propTypes = {
+    title: PropTypes.string,
+    sightsData: PropTypes.array,
+};
+
 export default SightGallery;
+

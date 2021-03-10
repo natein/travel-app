@@ -5,7 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import CountryMap from '../CountryMap';
 import WidgetDate from '../WidgetDate';
-import SightGallery from './SightGallery';
+import SightGallery from '../SightGallery';
+import Video from '../Video'
 
 const useStyles = makeStyles((theme) => ({
     countryMap: {
@@ -71,6 +72,10 @@ function Country({ country }) {
 
             <Box my={5}>
                 <CountryMap className={classes.countryMap} />
+            </Box>
+
+            <Box my={5}>
+                <Video/>
             </Box>
         </Box>
     );
