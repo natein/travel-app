@@ -44,7 +44,7 @@ const CountryMap = ({ className, isoCode, capitalCoordinates, locale }) => {
                 'country-label',
             );
 
-            map.setLayoutProperty('country-label', 'text-field', ['get', `name_${locale}`]);
+            map.setLayoutProperty('country-label', 'text-field', ['get', `name_${locale !== 'uk' ? locale : 'en'}`]);
 
             map.setFilter('country-boundaries', ['in', 'iso_3166_1_alpha_3', isoCode]);
         });
