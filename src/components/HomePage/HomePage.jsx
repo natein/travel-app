@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             boxShadow: `0 5px 8px 0 ${fade(theme.palette.primary.main, 0.4)},
                         0 5px 8px 0 ${fade(theme.palette.primary.main, 0.4)}`,
+            '& *': {
+                color: theme.palette.primary.light,
+            }
         }
     }
 }));
