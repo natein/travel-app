@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,12 +9,16 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
         margin: '0 auto',
+        '&:hover': {
+            boxShadow: `0 5px 8px 0 ${fade(theme.palette.primary.main, 0.4)},
+                        0 5px 8px 0 ${fade(theme.palette.primary.main, 0.4)}`,
+        }
     }
-});
+}));
 
 function Home({ countries, onPreview }) {
     const classes = useStyles();
