@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import { getVideoId } from '../../helpers';
