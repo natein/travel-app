@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
         appearance: 'none',
         '&:hover': {
             backgroundColor: fade(theme.palette.background.default, 0.4),
+        },
+        '&>option': {
+            color: theme.palette.common.black
         }
     },
     container: {
