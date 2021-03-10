@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -7,17 +7,19 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import LanguageSelector from './LanguageSelector';
 
 const useStyles = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2),
+    toolbar: {
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'space-between'
+        },
     },
     title: {
-        flexGrow: 1,
+        flexGrow: 3,
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
@@ -28,7 +30,11 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         fontSize: '18px',
     },
+    languageSwitch: {
+        flexGrow: 0,
+    },
     search: {
+        flexGrow: 1,
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -76,34 +82,39 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
     const classes = useStyles();
 
+    const match = useRouteMatch({
+        path: '/countries/:isoCode',
+        strict: true,
+        sensitive: true,
+    });
+
     const isUserLoggedIn = true;
 
     return (
         <AppBar position="fixed">
             <Container maxWidth="lg">
-                <Toolbar disableGutters>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
-                        <MenuIcon />
-                    </IconButton>
+                <Toolbar disableGutters className={classes.toolbar}>
                     <Typography className={classes.title} variant="h6" noWrap>
                         <Link className={classes.titleLink} to="/">
                             Travel App
                         </Link>
                     </Typography>
-
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
+                    <LanguageSelector className={classes.languageSwitch} />
+                    {!match && (
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+                                <SearchIcon />
+                            </div>
+                            <InputBase
+                                placeholder="Search…"
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
                         </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
+                    )}
                     <IconButton className={classes.loginBtn}>
                         {isUserLoggedIn ? <AccountCircleIcon /> : <ExitToAppIcon />}
                     </IconButton>
