@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import InputBase from '@material-ui/core/InputBase';
+
+import { AppBar, Toolbar, Button, IconButton, Typography, Container, InputBase } from '@material-ui/core';
+
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -36,6 +33,8 @@ const useStyles = makeStyles((theme) => ({
     },
     search: {
         flexGrow: 1,
+        display: 'flex',
+        justifyContent: 'space-between',
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -58,6 +57,14 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    searchButton: {
+        color: 'white',
+        border: '2px solid rgba(255, 255, 255, 0.2)',
+        borderLeftColor: 'white',
+        '&:hover': {
+          border: 'none',
+        },
     },
     inputRoot: {
         color: 'inherit',
@@ -100,22 +107,27 @@ function Header({countries}) {
                             Travel App
                         </Link>
                     </Typography>
-                    <LanguageSelector className={classes.languageSwitch} />
                     {!match && (
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon />
                             </div>
                             <InputBase
-                                placeholder="Search…"
+                                placeholder="Countries..."
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
                                 }}
                                 inputProps={{ 'aria-label': 'search' }}
+                                onChange={() => console.log('change')}
                             />
+                            <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => console.log('search')}>
+                                Search
+                            </Button>
                         </div>
                     )}
+                    <LanguageSelector className={classes.languageSwitch} />
+
                     <IconButton className={classes.loginBtn}>
                         {isUserLoggedIn ? <AccountCircleIcon /> : <ExitToAppIcon />}
                     </IconButton>
