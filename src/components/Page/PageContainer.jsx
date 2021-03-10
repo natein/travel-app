@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import * as countryActions from '../../actions/countryActions';
 import Page from './Page';
+import LoadingPage from '../LoadingPage';
 
 const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error }) => {
     const { isoCode } = useParams();
@@ -11,7 +12,7 @@ const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error })
     useEffect(() => {
         onLoadCountry(isoCode);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [locale]);
 
     useEffect(() => {
         if (error) {
@@ -21,7 +22,7 @@ const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error })
 
     return (
         <>
-            {loader && <h1>Loading data</h1>}
+            {loader && <LoadingPage />}
             {!loader && !!country && <Page country={country} />}
         </>
     );

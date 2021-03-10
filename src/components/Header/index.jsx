@@ -7,17 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import LanguageSelector from './LanguageSelector';
 
 const useStyles = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
     title: {
-        flexGrow: 1,
+        flexGrow: 3,
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
@@ -28,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         fontSize: '18px',
     },
+    languageSwitch: {
+        flexGrow: 0,
+    },
     search: {
+        flexGrow: 1,
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -82,15 +83,12 @@ export default function Header() {
         <AppBar position="fixed">
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
-                        <MenuIcon />
-                    </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
                         <Link className={classes.titleLink} to="/">
                             Travel App
                         </Link>
                     </Typography>
-
+                    <LanguageSelector className={classes.languageSwitch}/>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
