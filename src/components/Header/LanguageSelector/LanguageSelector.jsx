@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Box, fade, makeStyles } from '@material-ui/core';
 import TranslateIcon from '@material-ui/icons/Translate';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
     select: {
@@ -39,6 +40,11 @@ const useStyles = makeStyles((theme) => ({
 
 const LanguageSelector = ({ currentLocale, onLocaleChange }) => {
     const classes = useStyles();
+    const { t, i18n } = useTranslation();
+
+    useEffect(() => {
+        i18n.changeLanguage(currentLocale);
+    }, [currentLocale, i18n]);
 
     const onLanguageChange = useCallback(
         (e) => {
@@ -51,9 +57,9 @@ const LanguageSelector = ({ currentLocale, onLocaleChange }) => {
         <Box className={classes.container}>
             <TranslateIcon className={classes.icon}/>
             <select value={currentLocale} onChange={onLanguageChange} className={classes.select}>
-                <option value="ru">Russian</option>
-                <option value="en">English</option>
-                <option value="uk">Ukranian</option>
+                <option value="ru">{t('labels.locale.ru')}</option>
+                <option value="en">{t('labels.locale.en')}</option>
+                <option value="uk">{t('labels.locale.uk')}</option>
             </select>
         </Box>
     );

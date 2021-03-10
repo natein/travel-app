@@ -9,6 +9,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LanguageSelector from './LanguageSelector';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -90,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Header({countries}) {
     const classes = useStyles();
+    const { t } = useTranslation();
 
     const match = useRouteMatch({
         path: '/countries/:isoCode',
@@ -116,7 +118,7 @@ function Header({countries}) {
                             <InputBase
                                 autoFocus={true}
                                 autoComplete="false"
-                                placeholder="Countries..."
+                                placeholder={t('labels.search.placeholder')}
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
