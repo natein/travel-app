@@ -1,84 +1,54 @@
 import React, { useCallback } from 'react';
-import { Box, Button, makeStyles, Menu, MenuItem, withStyles } from '@material-ui/core';
+import { Box, fade, makeStyles } from '@material-ui/core';
 import TranslateIcon from '@material-ui/icons/Translate';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
-    button: {
-        color: theme.palette.common.white,
+    select: {
+        color: fade(theme.palette.common.white, 0.5),
+        fontSize: '1rem',
+        padding: '8px 8px 8px 0px',
+        minWidth: '7rem',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.background.default, 0.15),
+        border: 'none',
+        outline: 'none',
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        [theme.breakpoints.down('md')]: {
+            marginRight: theme.spacing(1)
+        }
     },
     icon: {
-        display: 'inherit',
-    },
-    singleIcon: {
-        [theme.breakpoints.down('sm')]: {
-            display: 'flex',
-            alignItems: 'center'
+        color: fade(theme.palette.common.white, 0.5),
+        marginRight: theme.spacing(1),
+        [theme.breakpoints.down('md')]: {
+            display: 'none'
         }
     }
 }));
 
-const StyledMenu = withStyles({
-    paper: {
-        minWidth: '10rem',
-    },
-})((props) => <Menu {...props} />);
-
-const LanguageSelector = ({ currentLocale, onLocaleChange, className }) => {
+const LanguageSelector = ({ currentLocale, onLocaleChange }) => {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
     const onLanguageChange = useCallback(
         (e) => {
-            console.log(e.target.id);
-            onLocaleChange(e.target.id);
-            handleClose();
+            onLocaleChange(e.target.value);
         },
         [onLocaleChange],
     );
 
     return (
-        <>
-            <Button
-                className={`${classes.button} ${className}`}
-                onClick={handleClick}
-                startIcon={
-                    <Box component="span" display={{ xs: 'none', md: 'block' }}>
-                        <TranslateIcon className={classes.icon} />
-                    </Box>
-                }
-                endIcon={
-                    <Box component="span" display={{ xs: 'none', md: 'block' }}>
-                        <ExpandMoreIcon className={classes.icon} />
-                    </Box>
-                }
-            >
-                <Box component="span" display={{ xs: 'none', md: 'block' }}>
-                    {currentLocale}
-                </Box>
-                <Box display={{ xs: 'block', md: 'none'}} className={classes.singleIcon}>
-                    <TranslateIcon />
-                </Box>
-            </Button>
-            <StyledMenu anchorEl={anchorEl} open={!!anchorEl} onClose={handleClose}>
-                <MenuItem onClick={onLanguageChange} id="ru">
-                    ru
-                </MenuItem>
-                <MenuItem onClick={onLanguageChange} id="en">
-                    en
-                </MenuItem>
-                <MenuItem onClick={onLanguageChange} id="uk">
-                    uk
-                </MenuItem>
-            </StyledMenu>
-        </>
+        <Box className={classes.container}>
+            <TranslateIcon className={classes.icon}/>
+            <select value={currentLocale} onChange={onLanguageChange} className={classes.select}>
+                <option value="ru">Russian</option>
+                <option value="en">English</option>
+                <option value="uk">Ukranian</option>
+            </select>
+        </Box>
     );
 };
 
