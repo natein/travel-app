@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,6 +13,11 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LanguageSelector from './LanguageSelector';
 
 const useStyles = makeStyles((theme) => ({
+    toolbar: {
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'space-between'
+        },
+    },
     title: {
         flexGrow: 3,
         display: 'none',
@@ -77,31 +82,39 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
     const classes = useStyles();
 
+    const match = useRouteMatch({
+        path: '/countries/:isoCode',
+        strict: true,
+        sensitive: true,
+    });
+
     const isUserLoggedIn = true;
 
     return (
         <AppBar position="fixed">
             <Container maxWidth="lg">
-                <Toolbar disableGutters>
+                <Toolbar disableGutters className={classes.toolbar}>
                     <Typography className={classes.title} variant="h6" noWrap>
                         <Link className={classes.titleLink} to="/">
                             Travel App
                         </Link>
                     </Typography>
-                    <LanguageSelector className={classes.languageSwitch}/>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            <SearchIcon />
+                    <LanguageSelector className={classes.languageSwitch} />
+                    {!match && (
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+                                <SearchIcon />
+                            </div>
+                            <InputBase
+                                placeholder="Search…"
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
                         </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </div>
+                    )}
                     <IconButton className={classes.loginBtn}>
                         {isUserLoggedIn ? <AccountCircleIcon /> : <ExitToAppIcon />}
                     </IconButton>
