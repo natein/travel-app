@@ -7,11 +7,12 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 import PropTypes from 'prop-types';
-
 import { makeStyles } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
 function SightGallery({ title, data: { sights: sightsData } }) {
-    
     const galleryOptions = {
         showPlayButton: false,
         thumbnailPosition: 'right',
@@ -34,9 +35,14 @@ function SightGallery({ title, data: { sights: sightsData } }) {
             bottom: 'initial',
             top: '0',
         },
+        title: {
+            wordWrap: 'break-word',
+        },
     }));
 
     const classes = useStyles();
+    let theme = createMuiTheme();
+    theme = responsiveFontSizes(theme);
 
     function renderLeftNav(onClick, disabled) {
         return (
@@ -74,7 +80,14 @@ function SightGallery({ title, data: { sights: sightsData } }) {
 
     return (
         <>
-            <h1 align="center">{title}</h1>
+            <Box my={3}>
+                <ThemeProvider theme={theme}>
+                    <Typography className={classes.title} align="center" component="h1" variant="h4">
+                        {title}
+                    </Typography>
+                </ThemeProvider>
+            </Box>
+
             <ImageGallery
                 renderLeftNav={renderLeftNav}
                 renderRightNav={renderRightNav}
@@ -86,11 +99,9 @@ function SightGallery({ title, data: { sights: sightsData } }) {
     );
 }
 
-
 SightGallery.propTypes = {
     title: PropTypes.string,
     sightsData: PropTypes.array,
 };
 
 export default SightGallery;
-

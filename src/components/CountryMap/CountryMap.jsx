@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import mapboxgl from 'mapbox-gl';
 import PropTypes from 'prop-types';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
@@ -10,6 +12,10 @@ const CountryMap = ({ className, isoCode, capitalCoordinates, locale, title }) =
     const [lng, setLng] = useState(capitalCoordinates.lon);
     const [lat, setLat] = useState(capitalCoordinates.lat);
     const [zoom, setZoom] = useState(4);
+
+    let theme = createMuiTheme();
+    theme = responsiveFontSizes(theme);
+
     useEffect(() => {
         const map = new mapboxgl.Map({
             container: mapContainer.current,
@@ -54,7 +60,13 @@ const CountryMap = ({ className, isoCode, capitalCoordinates, locale, title }) =
 
     return (
         <>
-            <h1 align="center">{title}</h1>
+            <Box my={3}>
+                <ThemeProvider theme={theme}>
+                    <Typography align="center" component="h1" variant="h4">
+                        {title}
+                    </Typography>
+                </ThemeProvider>
+            </Box>
             <Box className={`map-container ${className}`} ref={mapContainer} />
         </>
     );

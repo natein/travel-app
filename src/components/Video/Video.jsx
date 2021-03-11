@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 import { getVideoId } from '../../helpers';
 import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     box: {
@@ -22,33 +24,41 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Video({ title, video: { video: videoSrc } }) {
+function Video({ title, error, video: { video: videoSrc } }) {
     const classes = useStyles();
     const videoId = getVideoId(videoSrc);
+    let theme = createMuiTheme();
+    theme = responsiveFontSizes(theme);
 
     return (
         <>
-            <h1 align="center">{title}</h1>
+            <Box my={3}>
+                <ThemeProvider theme={theme}>
+                    <Typography align="center" component="h1" variant="h4">
+                        {title}
+                    </Typography>
+                </ThemeProvider>
+            </Box>
 
             {videoId ? (
                 <Box className={classes.box}>
-                <iframe
-                    title={title}
-                    className={classes.player}
-                    type="text/html"
-                    src={`https://www.youtube.com/embed/${videoId}`}
-                    frameBorder="0"
-                    allow="accelerometer"
-                    autoPlay
-                    clipboard-write="true"
-                    encrypted-media="true"
-                    gyroscope="true"
-                    picture-in-picture="true"
-                    allowFullScreen={true}
-                ></iframe>
-            </Box>
+                    <iframe
+                        title={title}
+                        className={classes.player}
+                        type="text/html"
+                        src={`https://www.youtube.com/embed/${videoId}`}
+                        frameBorder="0"
+                        allow="accelerometer"
+                        autoPlay
+                        clipboard-write="true"
+                        encrypted-media="true"
+                        gyroscope="true"
+                        picture-in-picture="true"
+                        allowFullScreen={true}
+                    ></iframe>
+                </Box>
             ) : (
-                <h1 align="center">Oops something went wrong...</h1>
+                <h1 align="center">{error}</h1>
             )}
         </>
     );

@@ -18,6 +18,15 @@ const useStyles = makeStyles((theme) => ({
     },
 
     descriptionGrid: {
+        [theme.breakpoints.down('xs')]: {
+            padding: 'initial',
+            marginBottom: theme.spacing(4),
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding: 'initial',
+            marginBottom: theme.spacing(4),
+        },
+        
         padding: theme.spacing(0, 10, 0, 0),
     },
 
