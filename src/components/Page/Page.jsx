@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import CountryMap from '../CountryMap';
 import WidgetDate from '../WidgetDate';
+import WidgetCurrency from '../WidgetCurrency';
 import SightGallery from '../SightGallery';
 import Video from '../Video'
 import { useTranslation } from 'react-i18next';
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Country({ country }) {
+function Country({ country, currency, loaderCurrency }) {
     const classes = useStyles();
     const { t } = useTranslation();
     return (
@@ -58,9 +59,14 @@ function Country({ country }) {
                         {t('labels.weather')}
                     </Paper>
 
-                    <Paper elevation={0} className={classes.widgetBox}>
-                        {t('labels.currency')}
-                    </Paper>
+                    {
+                        currency
+                            ?
+                            <Paper elevation={0} className={classes.widgetBox}>
+                                <WidgetCurrency />
+                            </Paper>
+                            : ''
+                    }
 
                     <Paper elevation={0} className={classes.widgetBox}>
                         <WidgetDate />
@@ -69,7 +75,7 @@ function Country({ country }) {
             </Grid>
 
             <Box my={5}>
-                <SightGallery/>
+                <SightGallery />
             </Box>
 
             <Box my={5}>
@@ -77,7 +83,7 @@ function Country({ country }) {
             </Box>
 
             <Box my={5}>
-                <Video/>
+                <Video />
             </Box>
         </Box>
     );
