@@ -16,6 +16,28 @@
         "sights": "Популярні місця",
         "video": "Відео",
         "map": "Розташування на мапі",
-        "error": "Щось пішло не так. перевірте url запиту"
+        "error": "Щось пішло не так. перевірте url запиту",
+        "developers": [
+            {
+                "fullname": "Іван Міхалчанка",
+                "github": "https://github.com/spaceragga"
+            },
+            {
+                "fullname": "Олексій Булгак",
+                "github": "https://github.com/aleksei-bulgak-study"
+            },
+            {
+                "fullname": "Микола Волженін",
+                "github": "https://github.com/Kvadeck"
+            },
+            {
+                "fullname": "Наталія Натеін",
+                "github": "https://github.com/natein"
+            },
+            {
+                "fullname": "Олександр Кудрявцев",
+                "github": "https://github.com/kvalexandr"
+            }
+        ]
     }
 }
