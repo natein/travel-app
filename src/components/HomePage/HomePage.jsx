@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
                 color: theme.palette.primary.light,
             }
         }
+    },
+    card: {
+        height: '7rem',
+        padding: '10px 0px 0px 14px',
     }
 }));
 
@@ -42,7 +46,7 @@ function Home({ countries, onPreview }) {
                                     image={country.image}
                                     title={country.name}
                                 />
-                                <CardContent>
+                                <CardContent className={classes.card}>
                                     <Typography gutterBottom variant="h5" component="h2">
                                         {country.name}
                                     </Typography>
