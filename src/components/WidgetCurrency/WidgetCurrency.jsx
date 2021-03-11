@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
   },
   currency: {
     fontSize: '18px'
+  },
+  currencyItem: {
+    display: 'block'
   }
 }));
 
@@ -49,7 +52,9 @@ function WidgetCurrency({ currency, country }) {
           currencyBox.map(item => {
             if (countryCurrencyCode !== item.name) {
               return (
-                <Box>{`${item.value} ${item.name}`}</Box>
+                <Box className={classes.currencyItem} component="span" key={item.name}>
+                  {`${item.value} ${item.name}`}
+                </Box>
               )
             }
             return '';
