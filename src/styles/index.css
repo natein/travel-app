@@ -23,4 +23,7 @@ code {
     .image-gallery-description {
         display: none;
     }
+    .image-gallery-fullscreen-button {
+        display: none;
+    }
 }

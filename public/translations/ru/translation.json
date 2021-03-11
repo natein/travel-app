@@ -16,6 +16,28 @@
         "sights": "Достопримечательности",
         "video": "Видео",
         "map": "Расположение на карте",
-        "error": "Что-то пошло не так. проверьте url запроса"
+        "error": "Что-то пошло не так. проверьте url запроса",
+        "developers": [
+            {
+                "fullname": "Иван Михалчанка",
+                "github": "https://github.com/spaceragga"
+            },
+            {
+                "fullname": "Алексей Булгак",
+                "github": "https://github.com/aleksei-bulgak-study"
+            },
+            {
+                "fullname": "Николай Волженин",
+                "github": "https://github.com/Kvadeck"
+            },
+            {
+                "fullname": "Наталия Натеин",
+                "github": "https://github.com/natein"
+            },
+            {
+                "fullname": "Александр Кудрявцев",
+                "github": "https://github.com/kvalexandr"
+            }
+        ]
     }
 }

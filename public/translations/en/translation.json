@@ -16,6 +16,28 @@
         "sights": "Popular places",
         "video": "Video",
         "map": "Location",
-        "error": "Page was not found."
+        "error": "Page was not found.",
+        "developers" : [
+              {
+                "fullname": "Ivan Mikhalchanka",
+                "github": "https://github.com/spaceragga"
+              },
+              {
+                "fullname": "Aleksei Bulgak",
+                "github": "https://github.com/aleksei-bulgak-study"
+              },
+              {
+                "fullname": "Nikolai Volzhenin",
+                "github": "https://github.com/Kvadeck"
+              },
+              {
+                "fullname": "Natalija Natein",
+                "github": "https://github.com/natein"
+              },
+              {
+                "fullname": "Alexandr Kudryavtcev",
+                "github": "https://github.com/kvalexandr"
+              }
+            ]
     }
 }
