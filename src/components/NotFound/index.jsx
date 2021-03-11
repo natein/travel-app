@@ -1,5 +1,6 @@
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 
 const classes = makeStyles((theme) => ({
@@ -12,17 +13,16 @@ const classes = makeStyles((theme) => ({
         textAlign: 'center',
         color: theme.palette.text.primary,
         p: {
-          color: theme.palette.text.secondary,
-        }
+            color: theme.palette.text.secondary,
+        },
     },
 }));
 
 function NotFound({ error, className }) {
+    const { t } = useTranslation();
     return (
         <Grid container spacing={2} className={`${classes().root} ${className}`} direction="column" justify="center">
-            <Container component="h1">
-                Page was not found.
-            </Container>
+            <Container component="h1">{t('labels.error')}</Container>
             <Container component="p" color>
                 {error}
             </Container>

@@ -7,13 +7,15 @@
         },
         "capital": "Capital:",
         "search": {
-            "placeholder": "Search..."
+            "placeholder": "Search...",
+            "button": "Search"
         },
         "view": "Preview",
         "weather": "Weather",
         "currency": "Exchange rate",
         "sights": "Popular places",
         "video": "Video",
-        "map": "Location"
+        "map": "Location",
+        "error": "Page was not found."
     }
 }

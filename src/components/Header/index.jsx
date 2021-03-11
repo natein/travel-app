@@ -127,7 +127,7 @@ function Header({countries}) {
                                 onChange={() => console.log('change')}
                             />
                             <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => console.log('search')}>
-                                Search
+                                {t('labels.search.button')}
                             </Button>
                         </div>
                     )}
