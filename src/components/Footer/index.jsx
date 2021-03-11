@@ -57,7 +57,7 @@ const developers = [
     github: 'https://github.com/aleksei-bulgak-study',
   },
   {
-    fullname: 'Nikolai Voljenin',
+    fullname: 'Nikolai Volzhenin',
     github: 'https://github.com/Kvadeck',
   },
   {

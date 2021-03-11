@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,12 +17,16 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             boxShadow: `0 5px 8px 0 ${fade(theme.palette.primary.main, 0.4)},
                         0 5px 8px 0 ${fade(theme.palette.primary.main, 0.4)}`,
+            '& *': {
+                color: theme.palette.primary.light,
+            }
         }
     }
 }));
 
 function Home({ countries, onPreview }) {
     const classes = useStyles();
+    const { t } = useTranslation();
 
     return (
         <>
@@ -42,16 +47,13 @@ function Home({ countries, onPreview }) {
                                         {country.name}
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary" component="p">
-                                        Capital: {country.capital.name}
+                                        {t('labels.capital')} {country.capital.name}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
                             <CardActions>
-                                <Button size="small" color="primary">
-                                    Share
-                                </Button>
                                 <Button size="small" color="primary" onClick={() => onPreview(country.isoCode)}>
-                                    Learn More
+                                    {t('labels.view')}
                                 </Button>
                             </CardActions>
                         </Card>

@@ -1,7 +1,7 @@
 const initialState = {
   countries: [],
   country: null,
-  locale: 'uk',
+  locale: 'ru',
   searchString: '',
   loader: false,
   error: null,

@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 function WidgetCurrency({ currency, country }) {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const currencyAll = currency.Valute;
   const countryCurrencyCode = country.currency.code;
@@ -40,7 +42,7 @@ function WidgetCurrency({ currency, country }) {
   return (
     <Box className={classes.center}>
       <Typography className={classes.title}>
-        Курс валюты {countryCurrencyCode}
+        {t('labels.currency')} {countryCurrencyCode}
       </Typography>
       <Typography className={classes.currency}>
         {
