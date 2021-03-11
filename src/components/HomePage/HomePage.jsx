@@ -34,7 +34,7 @@ function Home({ countries, onPreview }) {
                 {countries.map((country) => (
                     <Grid item xs={12} sm={6} md={3} key={country.isoCode}>
                         <Card className={classes.root}>
-                            <CardActionArea>
+                            <CardActionArea onClick={() => onPreview(country.isoCode)}>
                                 <CardMedia
                                     component="img"
                                     alt={country.capital.name}

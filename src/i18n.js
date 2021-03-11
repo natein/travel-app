@@ -15,8 +15,7 @@ i18n.use(HttpApi)
         },
 
         react: {
-            wait: true,
-            useSuspense: false,
+            useSuspense: true,
         },
         backend: {
             loadPath: '/translations/{{lng}}/{{ns}}.json',

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import React from 'react';
+import React, { Suspense } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Home from './HomePage';
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(12),
         marginBottom: theme.spacing(4),
         flexGrow: 1,
-        position: 'relative'
+        position: 'relative',
     },
     footer: {
         flex: '0 0 auto',
@@ -32,22 +32,24 @@ const useStyles = makeStyles((theme) => ({
 function App() {
     const classes = useStyles();
     return (
-        <Provider store={store}>
-            <Router>
-                <CssBaseline />
-                <Box component="div" className={classes.rootContainer}>
-                    <Header />
-                    <Container component="main" className={classes.mainContent}>
-                        <Switch>
-                            <Route path={['/countries', '/']} component={Home} exact />
-                            <Route path="/countries/:isoCode" component={Country} />
-                            <Route path="*" component={NotFound} />
-                        </Switch>
-                    </Container>
-                    <Footer className={classes.footer} />
-                </Box>
-            </Router>
-        </Provider>
+        <Suspense fallback={"loading..."}>
+            <Provider store={store}>
+                <Router>
+                    <CssBaseline />
+                    <Box component="div" className={classes.rootContainer}>
+                        <Header />
+                        <Container component="main" className={classes.mainContent}>
+                            <Switch>
+                                <Route path={['/countries', '/']} component={Home} exact />
+                                <Route path="/countries/:isoCode" component={Country} />
+                                <Route path="*" component={NotFound} />
+                            </Switch>
+                        </Container>
+                        <Footer className={classes.footer} />
+                    </Box>
+                </Router>
+            </Provider>
+        </Suspense>
     );
 }
 export default App;
