@@ -5,8 +5,7 @@ const initialState = {
   searchString: '',
   loader: false,
   error: null,
-  currency: [],
-  currencySearch: ''
+  currency: null
 };
 
 const commonReducer = (state = initialState, action) => {

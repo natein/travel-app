@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Country({ country }) {
+function Country({ country, currency, loaderCurrency }) {
     const classes = useStyles();
     return (
         <Box>
@@ -57,9 +57,14 @@ function Country({ country }) {
                         Погода
                     </Paper>
 
-                    <Paper elevation={0} className={classes.widgetBox}>
-                        <WidgetCurrency />
-                    </Paper>
+                    {
+                        currency
+                            ?
+                            <Paper elevation={0} className={classes.widgetBox}>
+                                <WidgetCurrency />
+                            </Paper>
+                            : ''
+                    }
 
                     <Paper elevation={0} className={classes.widgetBox}>
                         <WidgetDate />

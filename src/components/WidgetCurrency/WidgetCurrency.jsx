@@ -9,17 +9,50 @@ const useStyles = makeStyles((theme) => ({
   },
   center: {
     textAlign: 'center'
+  },
+  currency: {
+    fontSize: '18px'
   }
 }));
 
-function WidgetCurrency({ currency }) {
+function WidgetCurrency({ currency, country }) {
   const classes = useStyles();
 
+  const currencyAll = currency.Valute;
+  const countryCurrencyCode = country.currency.code;
+  const countryCurrencyToRub = currencyAll[countryCurrencyCode].Value;
+
+  const currencyBox = [
+    {
+      name: 'RUB',
+      value: countryCurrencyToRub.toFixed(2)
+    },
+    {
+      name: 'USD',
+      value: (countryCurrencyToRub / currencyAll['USD'].Value).toFixed(2)
+    },
+    {
+      name: 'EUR',
+      value: (countryCurrencyToRub / currencyAll['EUR'].Value).toFixed(2)
+    },
+  ];
 
   return (
     <Box className={classes.center}>
       <Typography className={classes.title}>
-        Курс валют {currency}
+        Курс валюты {countryCurrencyCode}
+      </Typography>
+      <Typography className={classes.currency}>
+        {
+          currencyBox.map(item => {
+            if (countryCurrencyCode !== item.name) {
+              return (
+                <Box>{`${item.value} ${item.name}`}</Box>
+              )
+            }
+            return '';
+          })
+        }
       </Typography>
     </Box>
   );

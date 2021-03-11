@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const currencyUrl = process.env.REACT_APP_CURRENCY_URL || '';
-const currencyKey = process.env.REACT_APP_CURRENCY_KEY || '';
 
-export const getCurrency = (currencySearch) => {
-  const url = `${currencyUrl}?get=rates&pairs=${currencySearch}&key=${currencyKey}`;
+export const getCurrency = () => {
+  const url = `https://cors-anywhere.herokuapp.com/${currencyUrl}`;
+  console.log(url);
   return axios
     .get(url)
     .then((response) => response.data);
