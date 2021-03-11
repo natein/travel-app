@@ -26,6 +26,8 @@ function WidgetCurrency({ currency, country }) {
     const currencyAll = currency.Valute;
     const countryCurrencyCode = country.currency.code;
     const countryCurrencyToRub = countryCurrencyCode === 'RUB' ? 1 : currencyAll[countryCurrencyCode].Value;
+    const countryCurrencyRubToUsd = countryCurrencyCode === 'RUB' ? currencyAll['USD'].Value : (countryCurrencyToRub / currencyAll['USD'].Value);
+    const countryCurrencyRubToEur = countryCurrencyCode === 'RUB' ? currencyAll['EUR'].Value : (countryCurrencyToRub / currencyAll['EUR'].Value);
 
     const currencyBox = [
         {
@@ -34,11 +36,11 @@ function WidgetCurrency({ currency, country }) {
         },
         {
             name: 'USD',
-            value: (countryCurrencyToRub / currencyAll['USD'].Value).toFixed(2),
+            value: countryCurrencyRubToUsd.toFixed(2),
         },
         {
             name: 'EUR',
-            value: (countryCurrencyToRub / currencyAll['EUR'].Value).toFixed(2),
+            value: countryCurrencyRubToEur.toFixed(2),
         },
     ];
 
