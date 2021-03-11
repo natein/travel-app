@@ -1,0 +1,19 @@
+{
+    "labels": {
+        "locale": {
+            "en": "English",
+            "ru": "Russian",
+            "uk": "Ukranian"
+        },
+        "capital": "Capital:",
+        "search": {
+            "placeholder": "Search..."
+        },
+        "view": "Preview",
+        "weather": "Weather",
+        "currency": "Exchange rate",
+        "sights": "Popular places",
+        "video": "Video",
+        "map": "Location"
+    }
+}

@@ -7,6 +7,7 @@ import CountryMap from '../CountryMap';
 import WidgetDate from '../WidgetDate';
 import SightGallery from '../SightGallery';
 import Video from '../Video'
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
     countryMap: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Country({ country }) {
     const classes = useStyles();
+    const { t } = useTranslation();
     return (
         <Box>
             <Typography variant="h3" gutterBottom>
@@ -46,18 +48,18 @@ function Country({ country }) {
                 <Grid item xs={12} md={9} className={classes.descriptionGrid}>
                     {<img className={classes.image} src={country.image} alt={country.name} />}
                     <Typography className={classes.capital}>
-                        <b>Столица:</b> {country.capital.name}
+                        <b>{t('labels.capital')}</b> {country.capital.name}
                     </Typography>
                     <Typography gutterBottom>{country.description}</Typography>
                 </Grid>
 
                 <Grid item xs={12} md={3}>
                     <Paper elevation={0} className={classes.widgetBox}>
-                        Погода
+                        {t('labels.weather')}
                     </Paper>
 
                     <Paper elevation={0} className={classes.widgetBox}>
-                        Курс валют
+                        {t('labels.currency')}
                     </Paper>
 
                     <Paper elevation={0} className={classes.widgetBox}>

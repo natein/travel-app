@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
-const CountryMap = ({ className, isoCode, capitalCoordinates, locale }) => {
+const CountryMap = ({ className, isoCode, capitalCoordinates, locale, title }) => {
     const mapContainer = useRef();
     const [lng, setLng] = useState(capitalCoordinates.lon);
     const [lat, setLat] = useState(capitalCoordinates.lat);
@@ -52,11 +52,17 @@ const CountryMap = ({ className, isoCode, capitalCoordinates, locale }) => {
         return () => map.remove();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    return <Box className={`map-container ${className}`} ref={mapContainer} />;
+    return (
+        <>
+            <h1 align="center">{title}</h1>
+            <Box className={`map-container ${className}`} ref={mapContainer} />
+        </>
+    );
 };
 
 CountryMap.propTypes = {
     locale: PropTypes.oneOf(['en', 'ru', 'uk']),
+    title: PropTypes.string.isRequired,
     className: PropTypes.string,
     isoCode: PropTypes.string.isRequired,
     capitalCoordinates: PropTypes.shape({
