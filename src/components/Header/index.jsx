@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 import { AppBar, Toolbar, Button, IconButton, Typography, Container, InputBase } from '@material-ui/core';
@@ -90,6 +90,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Header({countries}) {
+    const [search, setsearch] = useState('');
     const classes = useStyles();
     const { t } = useTranslation();
 
@@ -101,6 +102,15 @@ function Header({countries}) {
 
     const isUserLoggedIn = true;
 
+    const handleSearchChange = (e) => {
+        setsearch(e.target.value);
+        console.log(search)
+    };
+
+    const handleSearchClick = (search) => {
+        console.log(search);
+      };
+    
     return (
         <AppBar position="fixed">
             <Container maxWidth="lg">
@@ -124,9 +134,9 @@ function Header({countries}) {
                                     input: classes.inputInput,
                                 }}
                                 inputProps={{ 'aria-label': 'search' }}
-                                onChange={() => console.log('change')}
+                                onChange={(e) => handleSearchChange(e)}
                             />
-                            <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => console.log('search')}>
+                            <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => handleSearchClick(search)}>
                                 {t('labels.search.button')}
                             </Button>
                         </div>
