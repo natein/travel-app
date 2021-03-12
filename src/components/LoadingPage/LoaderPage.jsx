@@ -17,7 +17,7 @@ const LoaderPage = () => {
     const classes = useStyles();
     return (
         <Grid container spacing={4} className={classes.root}>
-            <CircularProgress size='10rem'/>
+            <CircularProgress size='5rem'/>
         </Grid>
     );
 };

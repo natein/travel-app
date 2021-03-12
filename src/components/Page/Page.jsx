@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     widgetBox: {
         padding: theme.spacing(2),
         backgroundColor: theme.palette.grey[200],
-        marginBottom: theme.spacing(2),
+        marginBottom: theme.spacing(2),   
     },
 
     image: {

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import WidgetWeather from './WidgetWeather';
 import * as weatherActions from '../../actions/weatherActions';
 import LoadingPage from '../LoadingPage';
+import { Box } from '@material-ui/core';
 
 const WidgetWeatherContainer = ({ weather, country, locale, onLoadWeather }) => {
     useEffect(() => {
@@ -15,10 +16,10 @@ const WidgetWeatherContainer = ({ weather, country, locale, onLoadWeather }) => 
     }, [locale, country.isoCode, onLoadWeather]);
 
     return (
-        <>
+        <Box position="relative" minWidth="5rem" minHeight="5rem">
             {!weather && <LoadingPage />}
             {weather && <WidgetWeather weather={weather} country={country} />}
-        </>
+        </Box>
     );
 };
 
