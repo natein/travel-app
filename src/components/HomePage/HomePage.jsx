@@ -3,10 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useTranslation } from 'react-i18next';
 
@@ -23,8 +21,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     card: {
-        height: '7rem',
-        padding: '10px 0px 0px 14px',
+        textAlign: 'center'
     }
 }));
 
@@ -36,9 +33,9 @@ function Home({ countries, onPreview }) {
         <>
             <Grid container spacing={4}>
                 {countries.map((country) => (
-                    <Grid item xs={12} sm={6} md={3} key={country.isoCode}>
+                    <Grid item xs={12} sm={6} md={3} key={country.isoCode} onClick={() => onPreview(country.isoCode)}>
                         <Card className={classes.root}>
-                            <CardActionArea onClick={() => onPreview(country.isoCode)}>
+                            <CardActionArea>
                                 <CardMedia
                                     component="img"
                                     alt={country.capital.name}
@@ -55,11 +52,6 @@ function Home({ countries, onPreview }) {
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
-                            <CardActions>
-                                <Button size="small" color="primary" onClick={() => onPreview(country.isoCode)}>
-                                    {t('labels.view')}
-                                </Button>
-                            </CardActions>
                         </Card>
                     </Grid>
                 ))}
