@@ -56,12 +56,7 @@ const DeveloperElement = ({ className, github, fullname }) => (
 function Footer({ className }) {
     const classes = useStyles();
     const { t } = useTranslation();
-    const [developers, setDevelopers] = React.useState([]);
-
-    React.useEffect(() => {
-        const getTeam = () => t('labels.developers', { returnObjects: true });
-        setDevelopers([].concat(getTeam()));
-    }, [t]);
+    const developers = t('labels.developers', { returnObjects: true });
 
     return (
         <footer className={classes.footer}>
