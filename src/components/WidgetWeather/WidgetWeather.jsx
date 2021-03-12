@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { useTranslation } from 'react-i18next';
-import imageUrl1 from '../../assets/weather/02.svg';
 
 const useStyles = makeStyles({
     weather: {
