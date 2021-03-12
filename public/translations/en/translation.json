@@ -14,6 +14,7 @@
         "weather": "Weather",
         "wind": "Wind:",
         "humidity": "Humidity:",
+        "speed": "m/s",
         "currency": "Exchange rate",
         "sights": "Popular places",
         "video": "Video",
