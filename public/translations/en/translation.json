@@ -12,6 +12,8 @@
         },
         "view": "Preview",
         "weather": "Weather",
+        "wind": "Wind:",
+        "humidity": "Humidity:",
         "currency": "Exchange rate",
         "sights": "Popular places",
         "video": "Video",
