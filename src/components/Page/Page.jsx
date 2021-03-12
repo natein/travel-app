@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Country({ country, currency, loaderCurrency, weather }) {
+function Country({ country, currency }) {
     const classes = useStyles();
     const { t } = useTranslation();
     return (

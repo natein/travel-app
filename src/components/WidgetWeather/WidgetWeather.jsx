@@ -3,11 +3,11 @@ import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { useTranslation } from 'react-i18next';
-import imageUrl1 from '../../assets/weather/02.svg'
+import imageUrl1 from '../../assets/weather/02.svg';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     weather: {
-        padding: '10px 0 10px 10px',        
+        padding: '10px 0 10px 10px',
     },
     weatherHeader: {
         fontSize: '30px',
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     tempContainer: {
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',     
+        alignItems: 'center',
     },
     weatherTemp: {
         fontSize: '36px',
@@ -30,31 +30,30 @@ const useStyles = makeStyles((theme) => ({
     weatherDetail: {
         fontSize: '20px',
     },
-}));
+});
 
 function WidgetWeather({ weather, country }) {
-    console.log(weather)
+    console.log(weather);
     const classes = useStyles();
-    const { t } = useTranslation();    
-    const temp = "-3°C";
-    const capital = (country) ? country.capital.name : '';
+    const { t } = useTranslation();
+    const capital = country ? country.capital.name : '';
 
     return (
         <Box className={classes.weather}>
-            <Typography className={classes.weatherHeader}>
-                { capital }
-            </Typography>
+            <Typography className={classes.weatherHeader}>{capital}</Typography>
             <Box className={classes.tempContainer}>
-                <Typography className={classes.weatherTemp}>
-                  { temp }
-                </Typography>
-                <img className={classes.weatherIcon} src={imageUrl1} />
+                <Typography className={classes.weatherTemp}>{Math.round(weather.main.temp)} °C</Typography>
+                <img
+                    className={classes.weatherIcon}
+                    src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                    alt={weather.weather[0].description}
+                />
             </Box>
             <Typography className={classes.weatherDetail}>
-                {t('labels.wind')}
+                {t('labels.wind')} {weather.wind.speed}
             </Typography>
             <Typography className={classes.weatherDetail}>
-                {t('labels.humidity')}
+                {t('labels.humidity')} {weather.main.humidity}
             </Typography>
         </Box>
     );

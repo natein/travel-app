@@ -8,5 +8,5 @@ export const getWeather = (lat, lon, lang) => {
 
   return axios
     .get(url)
-    .then((response) => response.data );
+    .then((response) => response.data);
 };

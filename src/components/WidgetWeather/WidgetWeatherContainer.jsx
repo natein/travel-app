@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import WidgetWeather from './WidgetWeather';
 
-const WidgetWeatherContainer = ({ weatherData, country }) => (
-    <WidgetWeather weatherData={weatherData} country={country} />
+const WidgetWeatherContainer = ({ weather, country }) => (
+    <WidgetWeather weather={weather} country={country} />
 );
 
 const mapStateToProps = (state) => ({
     locale: state.locale,
-    weatherData: state.weatherData,
+    weather: state.weather,
     country: state.country,
 });
 

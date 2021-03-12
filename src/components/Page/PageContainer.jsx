@@ -8,7 +8,7 @@ import Page from './Page';
 import LoadingPage from '../LoadingPage';
 
 const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error, 
-    onLoadCurrency, currency, weather, onLoadWeather }) => {
+    onLoadCurrency, currency, onLoadWeather }) => {
     const { isoCode } = useParams();
     const history = useHistory();
 
@@ -32,7 +32,7 @@ const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error,
     return (
         <>
             {loader && <LoadingPage />}
-            {!loader && !!country && <Page country={country} currency={currency} weather={weather} />}
+            {!loader && !!country && <Page country={country} currency={currency} />}
         </>
     );
 };
