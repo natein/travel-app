@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             width: '12ch',
             '&:focus': {
-                width: '20ch',
+                width: '100%',
             },
         },
     },
@@ -126,6 +126,7 @@ function Header({ onSearchValue }) {
                                 <SearchIcon />
                             </div>
                             <InputBase
+                                type="search"
                                 autoFocus={true}
                                 autoComplete="false"
                                 placeholder={t('labels.search.placeholder')}
