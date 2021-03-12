@@ -31,14 +31,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Home({ countries, onPreview }) {
+function Home({ onPreview, filterCount }) {
     const classes = useStyles();
     const { t } = useTranslation();
 
     return (
         <>
             <Grid container spacing={4}>
-                {countries.map((country) => (
+                {filterCount.map((country) => (
                     <Grid item xs={12} sm={6} md={3} key={country.isoCode} onClick={() => onPreview(country.isoCode)}>
                         <Card className={classes.root}>
                             <CardActionArea>

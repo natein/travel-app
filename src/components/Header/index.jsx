@@ -7,8 +7,12 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+
 import LanguageSelector from './LanguageSelector';
+
 import { connect } from 'react-redux';
+import * as countryActions from '../../actions/countryActions';
+
 import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Header({countries}) {
+function Header({ onSearchValue }) {
     const [search, setsearch] = useState('');
     const classes = useStyles();
     const { t } = useTranslation();
@@ -104,12 +108,8 @@ function Header({countries}) {
 
     const handleSearchChange = (e) => {
         setsearch(e.target.value);
-        console.log(search)
+        onSearchValue(e.target.value);
     };
-
-    const handleSearchClick = (search) => {
-        console.log(search);
-      };
     
     return (
         <AppBar position="fixed">
@@ -136,7 +136,7 @@ function Header({countries}) {
                                 inputProps={{ 'aria-label': 'search' }}
                                 onChange={(e) => handleSearchChange(e)}
                             />
-                            <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => handleSearchClick(search)}>
+                            <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => onSearchValue(search)}>
                                 {t('labels.search.button')}
                             </Button>
                         </div>
@@ -156,4 +156,8 @@ const mapStateToProps = (state) => ({
     countries: state.countries
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+    onSearchValue: (search) => dispatch(countryActions.searchValue(search)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

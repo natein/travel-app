@@ -1,5 +1,6 @@
 const initialState = {
   countries: [],
+  filterCount: [],
   country: null,
   locale: 'ru',
   searchString: '',
@@ -18,6 +19,9 @@ const commonReducer = (state = initialState, action) => {
     }
     case 'COUNTRIES': {
       return { ...state, countries: [...action.payload] };
+    }
+    case 'FILTER_COUNTRIES': {
+      return { ...state, filterCount: [...action.payload] };
     }
     case 'COUNTRY': {
       return { ...state, country: action.payload };

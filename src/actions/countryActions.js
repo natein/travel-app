@@ -1,4 +1,5 @@
 import { setLoader, onError } from './commonActions';
+import { setSearchValue } from './actionSearch';
 import * as countryService from '../api/countryService';
 
 export const loadCountries = () => (dispatch, getState) => {
@@ -7,6 +8,7 @@ export const loadCountries = () => (dispatch, getState) => {
     return countryService
         .getCountries(searchString, locale)
         .then((data) => dispatch(onCountriesLoaded(data)))
+        .then(() => dispatch(searchValue('')))
         .catch((err) => dispatch(onError(err)))
         .finally(() => dispatch(dispatch(setLoader(false))));
 };
@@ -22,4 +24,9 @@ export const loadCountryInfo = (isoCode) => (dispatch, getState) => {
         .then((data) => dispatch(onCountryLoaded(data)))
         .catch((err) => dispatch(onError(err)))
         .finally(() => dispatch(dispatch(setLoader(false))));
+};
+
+export const searchValue = (search) => (dispatch, getState) => {
+    const { countries } = getState();
+    dispatch(setSearchValue(countries.filter((country) => country.name.toLowerCase().includes(search.toLowerCase()))));
 };

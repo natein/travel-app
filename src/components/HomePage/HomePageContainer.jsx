@@ -5,7 +5,7 @@ import * as countryActions from '../../actions/countryActions';
 import HomePage from './HomePage';
 import LoadingPage from '../LoadingPage';
 
-const HomePageContainer = ({ loader, locale = 'en', countries, onLoadCountries }) => {
+const HomePageContainer = ({ loader, locale = 'en', countries, onLoadCountries, filterCount }) => {
     const history = useHistory();
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const HomePageContainer = ({ loader, locale = 'en', countries, onLoadCountries }
     return (
         <>
             {loader && <LoadingPage />}
-            {!loader && countries.length > 0 && <HomePage countries={countries} onPreview={onPreview} />}
+            {!loader && countries.length > 0 && <HomePage countries={countries} filterCount={filterCount} onPreview={onPreview} />}
         </>
     );
 };
@@ -27,6 +27,7 @@ const mapStateToProps = (state) => ({
     loader: state.loader,
     countries: state.countries,
     locale: state.locale,
+    filterCount: state.filterCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
