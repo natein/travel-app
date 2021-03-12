@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
         margin: '0 auto',
+        // padding: '2px 0px 2px 0px',
         '&:hover': {
             boxShadow: `0 5px 8px 0 ${fade(theme.palette.primary.main, 0.4)},
                         0 5px 8px 0 ${fade(theme.palette.primary.main, 0.4)}`,
@@ -21,7 +22,12 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     card: {
-        textAlign: 'center'
+        padding: '2px 0px 2px 0px',
+        height: '6rem',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
     }
 }));
 
