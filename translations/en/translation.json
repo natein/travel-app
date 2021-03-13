@@ -41,6 +41,7 @@
                 "fullname": "Alexandr Kudryavtcev",
                 "github": "https://github.com/kvalexandr"
               }
-            ]
+            ],
+            "countriesNotFound": "No countries or capitals for specified search string were found"
     }
 }
