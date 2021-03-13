@@ -6,7 +6,8 @@ const initialState = {
   searchString: '',
   loader: false,
   error: null,
-  currency: null
+  currency: null,
+  weather: null
 };
 
 const commonReducer = (state = initialState, action) => {
@@ -28,6 +29,9 @@ const commonReducer = (state = initialState, action) => {
     }
     case 'CURRENCY': {
       return { ...state, currency: action.payload };
+    }
+    case 'WEATHER': {
+      return { ...state, weather: action.payload };
     }
     case 'LOCALE': {
       return { ...state, locale: action.payload };

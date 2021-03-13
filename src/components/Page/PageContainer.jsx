@@ -6,13 +6,14 @@ import * as currencyActions from '../../actions/currencyActions';
 import Page from './Page';
 import LoadingPage from '../LoadingPage';
 
-const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error, onLoadCurrency, currency }) => {
+const PageContainer = ({ loader, locale = 'en', country, onLoadCountry, error, 
+    onLoadCurrency, currency }) => {
     const { isoCode } = useParams();
     const history = useHistory();
 
     useEffect(() => {
         onLoadCountry(isoCode);
-        onLoadCurrency();
+        onLoadCurrency();       
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [locale]);
 
@@ -36,6 +37,7 @@ const mapStateToProps = (state) => ({
     locale: state.locale,
     error: state.error,
     currency: state.currency,
+    weather: state.weather,
 });
 
 const mapDispatchToProps = (dispatch) => ({

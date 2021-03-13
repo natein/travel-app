@@ -6,6 +6,7 @@ import React from 'react';
 import CountryMap from '../CountryMap';
 import WidgetDate from '../WidgetDate';
 import WidgetCurrency from '../WidgetCurrency';
+import WidgetWeather from '../WidgetWeather';
 import SightGallery from '../SightGallery';
 import Video from '../Video'
 import { useTranslation } from 'react-i18next';
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     widgetBox: {
         padding: theme.spacing(2),
         backgroundColor: theme.palette.grey[200],
-        marginBottom: theme.spacing(2),
+        marginBottom: theme.spacing(2),   
     },
 
     image: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Country({ country, currency, loaderCurrency }) {
+function Country({ country, currency }) {
     const classes = useStyles();
     const { t } = useTranslation();
     return (
@@ -65,7 +66,7 @@ function Country({ country, currency, loaderCurrency }) {
 
                 <Grid item xs={12} md={3}>
                     <Paper elevation={0} className={classes.widgetBox}>
-                        {t('labels.weather')}
+                        <WidgetWeather />
                     </Paper>
 
                     {
