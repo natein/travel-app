@@ -1,16 +1,4 @@
-const initialState = {
-    countries: [],
-    search: '',
-    filteredCountries: [],
-    country: null,
-    locale: 'ru',
-    loader: true,
-    error: null,
-    currency: null,
-    weather: null,
-};
-
-const commonReducer = (state = initialState, action) => {
+const commonReducer = (state, action) => {
     switch (action.type) {
         case 'LOADER': {
             return { ...state, loader: action.payload };
