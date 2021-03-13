@@ -42,6 +42,13 @@
                 "github": "https://github.com/kvalexandr"
             }
         ],
-        "countriesNotFound": "Країн або столиць за вказаною запитом не знайдено"
+        "countriesNotFound": "Країн або столиць за вказаною запитом не знайдено",
+        "user": {
+            "loginTitle": "Вхід",
+            "username": "Ім'я користувача",
+            "password": "Пароль",
+            "loginButton": "Увійти",
+            "signUp": "Зареєструватися"
+          }
     }
 }

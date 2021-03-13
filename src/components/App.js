@@ -7,10 +7,12 @@ import Country from './Page';
 import Header from './Header';
 import Footer from './Footer';
 import NotFound from './NotFound';
+import LoginPage from './LoginPage';
 import { Provider } from 'react-redux';
 
 import store from '../store/store';
 import { Box, makeStyles } from '@material-ui/core';
+import SignupPage from './LoginPage/SignupPage';
 
 const useStyles = makeStyles((theme) => ({
     rootContainer: {
@@ -42,6 +44,8 @@ function App() {
                             <Switch>
                                 <Route path={['/countries', '/']} component={Home} exact />
                                 <Route path="/countries/:isoCode" component={Country} />
+                                <Route path="/login" component={LoginPage} />
+                                <Route path="/sign-up" component={SignupPage} />
                                 <Route path="*" component={NotFound} />
                             </Switch>
                         </Container>

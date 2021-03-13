@@ -7,7 +7,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 
 import LanguageSelector from './LanguageSelector';
-import TransitionsModal from './ModalLogin';
+import TransitionsModal from './UserIcon';
 
 import { connect } from 'react-redux';
 import * as countryActions from '../../actions/countryActions';

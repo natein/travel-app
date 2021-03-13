@@ -13,8 +13,7 @@ const commonReducer = (state, action) => {
             const filteredCountries = state.countries.filter((country) => {
                 const search = action.payload.toLowerCase();
                 return (
-                    country.name.toLowerCase().includes(search) 
-                    || country.capital.name.toLowerCase().includes(search)
+                    country.name.toLowerCase().includes(search) || country.capital.name.toLowerCase().includes(search)
                 );
             });
             return { ...state, filteredCountries, search: action.payload };
@@ -30,6 +29,12 @@ const commonReducer = (state, action) => {
         }
         case 'LOCALE': {
             return { ...state, locale: action.payload };
+        }
+        case 'USER': {
+            return { ...state, error: null, user: action.payload };
+        }
+        case 'USER_LOGOUT': {
+            return { ...state, user: null };
         }
         default: {
             return state;

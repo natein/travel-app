@@ -42,6 +42,13 @@
                 "github": "https://github.com/kvalexandr"
               }
             ],
-            "countriesNotFound": "No countries or capitals for specified search string were found"
+            "countriesNotFound": "No countries or capitals for specified search string were found",
+            "user": {
+              "loginTitle": "Login page",
+              "username": "Username",
+              "password": "Password",
+              "loginButton": "Login",
+              "signUp": "Sing up"
+            }
     }
 }
