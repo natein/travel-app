@@ -155,6 +155,7 @@ function Header({ search, onSearchValue }) {
 }
 
 const mapStateToProps = (state) => ({
+    search: state.search,
     countries: state.countries,
 });
 
