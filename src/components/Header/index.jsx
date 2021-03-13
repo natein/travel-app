@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles((theme) => ({
     toolbar: {
         [theme.breakpoints.down('sm')]: {
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
         },
     },
     title: {
@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid rgba(255, 255, 255, 0.2)',
         borderLeftColor: 'white',
         '&:hover': {
-          border: 'none',
+            border: 'none',
         },
     },
     inputRoot: {
@@ -102,7 +102,13 @@ function Header({ search, onSearchValue }) {
     const handleSearchChange = (e) => {
         onSearchValue(e.target.value);
     };
-    
+
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchChange(e);
+        }
+    };
+
     return (
         <AppBar position="fixed">
             <Container maxWidth="lg">
@@ -128,8 +134,14 @@ function Header({ search, onSearchValue }) {
                                 }}
                                 inputProps={{ 'aria-label': 'search' }}
                                 onChange={handleSearchChange}
+                                onKeyDown={handleEnter}
                             />
-                            <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => onSearchValue(search)}>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                className={classes.searchButton}
+                                onClick={() => onSearchValue(search)}
+                            >
                                 {t('labels.search.button')}
                             </Button>
                         </div>
@@ -143,7 +155,7 @@ function Header({ search, onSearchValue }) {
 }
 
 const mapStateToProps = (state) => ({
-    countries: state.countries
+    countries: state.countries,
 });
 
 const mapDispatchToProps = (dispatch) => ({
