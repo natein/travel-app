@@ -4,8 +4,34 @@ import { useHistory } from 'react-router';
 import * as countryActions from '../../actions/countryActions';
 import HomePage from './HomePage';
 import LoadingPage from '../LoadingPage';
+import { useTranslation } from 'react-i18next';
+import { Box, makeStyles } from '@material-ui/core';
 
-const HomePageContainer = ({ loader, locale = 'en', countries, onLoadCountries, filterCount }) => {
+const useStyles = makeStyles({
+    root: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right:0,
+        bottom: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});
+
+const EmptyList = () => {
+    const { t } = useTranslation();
+    const classes = useStyles();
+    return (
+        <Box className={classes.root}>
+            <h1>{t('labels.countriesNotFound')}</h1>
+        </Box>
+    );
+};
+
+const HomePageContainer = ({ loader, locale = 'en', filteredCountries, onLoadCountries }) => {
     const history = useHistory();
 
     useEffect(() => {
@@ -18,16 +44,16 @@ const HomePageContainer = ({ loader, locale = 'en', countries, onLoadCountries, 
     return (
         <>
             {loader && <LoadingPage />}
-            {!loader && countries.length > 0 && <HomePage countries={countries} filterCount={filterCount} onPreview={onPreview} />}
+            {!loader && filteredCountries.length === 0 && <EmptyList />}
+            {!loader && filteredCountries.length > 0 && <HomePage countries={filteredCountries} onPreview={onPreview} />}
         </>
     );
 };
 
 const mapStateToProps = (state) => ({
     loader: state.loader,
-    countries: state.countries,
+    filteredCountries: state.filteredCountries,
     locale: state.locale,
-    filterCount: state.filterCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({

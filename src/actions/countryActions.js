@@ -1,14 +1,13 @@
 import { setLoader, onError } from './commonActions';
-import { setSearchValue } from './actionSearch';
 import * as countryService from '../api/countryService';
 
 export const loadCountries = () => (dispatch, getState) => {
     dispatch(setLoader(true));
-    const { locale, searchString } = getState();
+    const { locale, search } = getState();
     return countryService
-        .getCountries(searchString, locale)
+        .getCountries(locale)
         .then((data) => dispatch(onCountriesLoaded(data)))
-        .then(() => dispatch(searchValue('')))
+        .then(() => dispatch(searchValue(search)))
         .catch((err) => dispatch(onError(err)))
         .finally(() => dispatch(dispatch(setLoader(false))));
 };
@@ -26,7 +25,7 @@ export const loadCountryInfo = (isoCode) => (dispatch, getState) => {
         .finally(() => dispatch(dispatch(setLoader(false))));
 };
 
-export const searchValue = (search) => (dispatch, getState) => {
-    const { countries } = getState();
-    dispatch(setSearchValue(countries.filter((country) => country.name.toLowerCase().includes(search.toLowerCase()))));
-};
+export const searchValue = (search) => ({
+    type: 'FILTER_COUNTRIES',
+    payload: search
+});

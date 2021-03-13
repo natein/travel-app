@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 import { AppBar, Toolbar, Button, Typography, Container, InputBase } from '@material-ui/core';
@@ -89,8 +89,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Header({ onSearchValue }) {
-    const [search, setsearch] = useState('');
+function Header({ search, onSearchValue }) {
     const classes = useStyles();
     const { t } = useTranslation();
 
@@ -101,7 +100,6 @@ function Header({ onSearchValue }) {
     });
 
     const handleSearchChange = (e) => {
-        setsearch(e.target.value);
         onSearchValue(e.target.value);
     };
     
@@ -129,7 +127,7 @@ function Header({ onSearchValue }) {
                                     input: classes.inputInput,
                                 }}
                                 inputProps={{ 'aria-label': 'search' }}
-                                onChange={(e) => handleSearchChange(e)}
+                                onChange={handleSearchChange}
                             />
                             <Button variant="outlined" color="primary" className={classes.searchButton} onClick={() => onSearchValue(search)}>
                                 {t('labels.search.button')}

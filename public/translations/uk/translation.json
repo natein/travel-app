@@ -41,6 +41,7 @@
                 "fullname": "Олександр Кудрявцев",
                 "github": "https://github.com/kvalexandr"
             }
-        ]
+        ],
+        "countriesNotFound": "Країн або столиць за вказаною запитом не знайдено"
     }
 }

@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const baseUrl = process.env.REACT_APP_API || '';
 
-export const getCountries = (search, locale) => {
-    const url = `${baseUrl}/countries?locale=${locale}&search=${search}`;
+export const getCountries = (locale) => {
+    const url = `${baseUrl}/countries?locale=${locale}`;
     return axios
         .get(url)
         .then((response) => response.data);

@@ -1,1 +1,0 @@
-export const setSearchValue = (payload) => ({ type: 'FILTER_COUNTRIES', payload });
