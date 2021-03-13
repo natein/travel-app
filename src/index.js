@@ -5,9 +5,7 @@ import App from './components/App';
 import './i18n';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <App />,
   document.getElementById('root')
 );
 

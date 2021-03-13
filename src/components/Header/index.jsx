@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
-import { AppBar, Toolbar, Button, IconButton, Typography, Container, InputBase } from '@material-ui/core';
+import { AppBar, Toolbar, Button, Typography, Container, InputBase } from '@material-ui/core';
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import LanguageSelector from './LanguageSelector';
+import TransitionsModal from './ModalLogin';
 
 import { connect } from 'react-redux';
 import * as countryActions from '../../actions/countryActions';
@@ -88,9 +87,6 @@ const useStyles = makeStyles((theme) => ({
             },
         },
     },
-    loginBtn: {
-        marginLeft: '10px',
-    },
 }));
 
 function Header({ onSearchValue }) {
@@ -103,8 +99,6 @@ function Header({ onSearchValue }) {
         strict: true,
         sensitive: true,
     });
-
-    const isUserLoggedIn = true;
 
     const handleSearchChange = (e) => {
         setsearch(e.target.value);
@@ -143,10 +137,7 @@ function Header({ onSearchValue }) {
                         </div>
                     )}
                     <LanguageSelector className={classes.languageSwitch} />
-
-                    <IconButton className={classes.loginBtn}>
-                        {isUserLoggedIn ? <AccountCircleIcon /> : <ExitToAppIcon />}
-                    </IconButton>
+                    <TransitionsModal />
                 </Toolbar>
             </Container>
         </AppBar>
