@@ -23,6 +23,7 @@ const CountryMap = ({ className, isoCode, capitalCoordinates, locale, title }) =
             center: [lng, lat],
             zoom: zoom,
         });
+        map.addControl(new mapboxgl.NavigationControl());
 
         map.on('move', () => {
             setLng(map.getCenter().lng.toFixed(6));
