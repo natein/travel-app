@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
     title: {
@@ -64,5 +65,16 @@ function WidgetCurrency({ currency, country }) {
         </Box>
     );
 }
+
+WidgetCurrency.propTypes = {
+    currency: PropTypes.shape({
+        Valute: PropTypes.object.isRequired,
+    }).isRequired,
+    country: PropTypes.shape({
+        currency: PropTypes.shape({
+            code: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired,
+};
 
 export default WidgetCurrency;

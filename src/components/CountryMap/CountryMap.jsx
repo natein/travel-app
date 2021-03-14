@@ -85,7 +85,7 @@ CountryMap.propTypes = {
 };
 
 CountryMap.defaultProps = {
-    locale: 'en',
+    locale: 'ru',
     className: '',
 };
 

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
     weather: {
@@ -67,5 +68,26 @@ function WidgetWeather({ weather, country }) {
         </Box>
     );
 }
+
+WidgetWeather.propTypes = {
+    weather: PropTypes.shape({
+        main: PropTypes.shape({
+            temp: PropTypes.number.isRequired,
+            humidity: PropTypes.number.isRequired
+        }).isRequired,
+        wind: PropTypes.shape({
+            speed: PropTypes.number.isRequired
+        }).isRequired,
+        weather: PropTypes.arrayOf(PropTypes.shape({
+            description: PropTypes.string.isRequired,
+            icon: PropTypes.string.isRequired,
+        })).isRequired
+    }).isRequired,
+    country: PropTypes.shape({
+        capital: PropTypes.shape({
+            name: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired,
+};
 
 export default WidgetWeather;

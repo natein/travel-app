@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
-function SightGallery({ title, data: { sights: sightsData } }) {
+function SightGallery({ title, data }) {
     const galleryOptions = {
         showPlayButton: false,
         thumbnailPosition: 'right',
@@ -93,7 +93,7 @@ function SightGallery({ title, data: { sights: sightsData } }) {
                 renderRightNav={renderRightNav}
                 renderFullscreenButton={renderFullscreenButton}
                 {...galleryOptions}
-                items={sightGalleryDataAdapter(sightsData)}
+                items={sightGalleryDataAdapter(data)}
             />
         </>
     );
@@ -101,7 +101,16 @@ function SightGallery({ title, data: { sights: sightsData } }) {
 
 SightGallery.propTypes = {
     title: PropTypes.string,
-    sightsData: PropTypes.array,
+    data: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        rating: PropTypes.arrayOf(PropTypes.shape({
+            username: PropTypes.string.isRequired,
+            rate: PropTypes.number.isRequired
+        }))
+    })).isRequired,
 };
 
 export default SightGallery;

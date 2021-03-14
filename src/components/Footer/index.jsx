@@ -53,7 +53,7 @@ const DeveloperElement = ({ className, github, fullname }) => (
     </a>
 );
 
-function Footer({ className }) {
+function Footer() {
     const classes = useStyles();
     const { t } = useTranslation();
     const developers = t('labels.developers', { returnObjects: true });

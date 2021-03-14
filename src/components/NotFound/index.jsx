@@ -2,6 +2,7 @@ import { Container, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const classes = makeStyles((theme) => ({
     root: {
@@ -29,6 +30,16 @@ function NotFound({ error, className }) {
         </Grid>
     );
 }
+
+NotFound.propTypes = {
+    error: PropTypes.string,
+    className: PropTypes.string,
+};
+
+NotFound.defaultProps = {
+    error: null,
+    className: '',
+};
 
 const mapStateToProps = (state) => ({
     error: state.error,

@@ -24,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Video({ title, error, video: { video: videoSrc } }) {
+function Video({ title, error, video }) {
     const classes = useStyles();
-    const videoId = getVideoId(videoSrc);
+    const videoId = getVideoId(video);
     let theme = createMuiTheme();
     theme = responsiveFontSizes(theme);
 
@@ -65,8 +65,9 @@ function Video({ title, error, video: { video: videoSrc } }) {
 }
 
 Video.propTypes = {
-    title: PropTypes.string,
-    videoSrc: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    video: PropTypes.string.isRequired,
+    error: PropTypes.string
 };
 
 export default Video;

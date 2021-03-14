@@ -4,6 +4,7 @@ import WidgetWeather from './WidgetWeather';
 import * as weatherActions from '../../actions/weatherActions';
 import LoadingPage from '../LoadingPage';
 import { Box } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const WidgetWeatherContainer = ({ weather, country, locale, onLoadWeather }) => {
     useEffect(() => {
@@ -21,6 +22,33 @@ const WidgetWeatherContainer = ({ weather, country, locale, onLoadWeather }) => 
             {weather && <WidgetWeather weather={weather} country={country} />}
         </Box>
     );
+};
+
+WidgetWeatherContainer.propTypes = {
+    weather: PropTypes.shape({
+        main: PropTypes.shape({
+            temp: PropTypes.number.isRequired,
+            humidity: PropTypes.number.isRequired
+        }).isRequired,
+        wind: PropTypes.shape({
+            speed: PropTypes.number.isRequired
+        }).isRequired,
+        weather: PropTypes.arrayOf(PropTypes.shape({
+            description: PropTypes.string.isRequired,
+            icon: PropTypes.string.isRequired,
+        })).isRequired
+    }),
+    country: PropTypes.shape({
+        capital: PropTypes.shape({
+            name: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired,
+    locale: PropTypes.oneOf(['en', 'ru', 'uk']),
+    onLoadWeather: PropTypes.func.isRequired
+};
+
+WidgetWeatherContainer.defaultProps = {
+    locale: 'ru',
 };
 
 const mapStateToProps = (state) => ({
