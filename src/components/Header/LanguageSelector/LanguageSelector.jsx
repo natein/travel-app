@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { Box, fade, makeStyles } from '@material-ui/core';
 import TranslateIcon from '@material-ui/icons/Translate';
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
     select: {
@@ -63,6 +64,15 @@ const LanguageSelector = ({ currentLocale, onLocaleChange }) => {
             </select>
         </Box>
     );
+};
+
+LanguageSelector.propTypes = {
+    currentLocale: PropTypes.oneOf(['en', 'uk', 'ru']),
+    onLocaleChange: PropTypes.func.isRequired,
+};
+
+LanguageSelector.defaultProps = {
+    currentLocale: 'ru'
 };
 
 export default LanguageSelector;

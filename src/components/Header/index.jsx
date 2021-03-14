@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import * as countryActions from '../../actions/countryActions';
 
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -154,6 +155,15 @@ function Header({ search, onSearchValue }) {
         </AppBar>
     );
 }
+
+Header.propTypes = {
+    search: PropTypes.string,
+    onSearchValue: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+    search: '',
+};
 
 const mapStateToProps = (state) => ({
     search: state.search,

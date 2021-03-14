@@ -8,6 +8,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
     loginBtn: {
@@ -47,6 +48,15 @@ function UserIcon({ user, onLogout }) {
         </>
     );
 }
+
+UserIcon.propTypes = {
+    user: PropTypes.shape({
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+        logo: PropTypes.string
+    }),
+    onLogout: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => ({
     user: state.user,
