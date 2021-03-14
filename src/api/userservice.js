@@ -47,3 +47,13 @@ export const autoLogin = () => {
         )
         .then((response) => response.data);
 };
+
+export const logout = () => {
+    const url = `${baseUrl}/users/logout`;
+    return axios
+        .get(
+            url,
+            { withCredentials: true },
+        )
+        .then((response) => response.data);
+};

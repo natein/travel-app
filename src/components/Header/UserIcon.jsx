@@ -63,7 +63,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onLogout: () => dispatch(userActions.logout()),
+    onLogout: () => dispatch(userActions.onLogout()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserIcon);

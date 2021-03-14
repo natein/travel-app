@@ -12,7 +12,7 @@ export const createNewUser = (username, password, avatar) => (dispatch) => {
 
 export const logout = () => (dispatch) => {
     dispatch({ type: 'USER_LOGOUT' });
-    document.cookie = 'AUTH=; Max-Age=-99999999;';
+    document.cookie = 'AUTH; Max-Age=-99999999;';
 };
 
 export const onLogin = (username, password) => (dispatch) => {
@@ -29,6 +29,15 @@ export const onAutoLogin = () => (dispatch) => {
     return userService
         .autoLogin()
         .then((data) => dispatch({ type: 'USER', payload: data }))
+        .catch((err) => console.log('Autologin failed', err))
+        .finally(() => dispatch(dispatch(setLoader(false))));
+};
+
+export const onLogout = () => (dispatch) => {
+    dispatch(setLoader(true));
+    return userService
+        .logout()
+        .then(() => dispatch({ type: 'USER_LOGOUT' }))
         .catch((err) => console.log('Autologin failed', err))
         .finally(() => dispatch(dispatch(setLoader(false))));
 };
