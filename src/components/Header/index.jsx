@@ -135,6 +135,7 @@ function Header({ search, onSearchValue }) {
                                 inputProps={{ 'aria-label': 'search' }}
                                 onChange={handleSearchChange}
                                 onKeyDown={handleEnter}
+                                value={search}
                             />
                             <Button
                                 variant="outlined"
