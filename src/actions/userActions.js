@@ -23,3 +23,12 @@ export const onLogin = (username, password) => (dispatch) => {
         .catch((err) => dispatch(onError(err.response ? err.response.data : err)))
         .finally(() => dispatch(dispatch(setLoader(false))));
 };
+
+export const onAutoLogin = () => (dispatch) => {
+    dispatch(setLoader(true));
+    return userService
+        .autoLogin()
+        .then((data) => dispatch({ type: 'USER', payload: data }))
+        .catch((err) => console.log('Autologin failed', err))
+        .finally(() => dispatch(dispatch(setLoader(false))));
+};

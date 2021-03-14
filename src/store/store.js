@@ -14,6 +14,7 @@ const initialState = {
     error: null,
     currency: null,
     weather: null,
+    user: null
 };
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunk, localStorageMiddleware));

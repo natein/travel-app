@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
 import { AppBar, Toolbar, Button, Typography, Container, InputBase } from '@material-ui/core';
@@ -11,6 +11,7 @@ import TransitionsModal from './UserIcon';
 
 import { connect } from 'react-redux';
 import * as countryActions from '../../actions/countryActions';
+import * as userActions from '../../actions/userActions';
 
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
@@ -90,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Header({ search, onSearchValue }) {
+function Header({ search, onSearchValue, onAutoLogin }) {
     const classes = useStyles();
     const { t } = useTranslation();
 
@@ -109,6 +110,11 @@ function Header({ search, onSearchValue }) {
             handleSearchChange(e);
         }
     };
+
+    useEffect(() => {
+        onAutoLogin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <AppBar position="fixed">
@@ -159,6 +165,7 @@ function Header({ search, onSearchValue }) {
 Header.propTypes = {
     search: PropTypes.string,
     onSearchValue: PropTypes.func.isRequired,
+    onAutoLogin: PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
@@ -172,6 +179,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onSearchValue: (search) => dispatch(countryActions.searchValue(search)),
+    onAutoLogin: () => dispatch(userActions.onAutoLogin()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

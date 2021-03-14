@@ -37,3 +37,13 @@ export const login = (username, password) => {
         )
         .then((response) => response.data);
 };
+
+export const autoLogin = () => {
+    const url = `${baseUrl}/users/autologin`;
+    return axios
+        .get(
+            url,
+            { withCredentials: true },
+        )
+        .then((response) => response.data);
+};
