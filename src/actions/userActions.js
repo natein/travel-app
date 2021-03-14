@@ -10,7 +10,10 @@ export const createNewUser = (username, password, avatar) => (dispatch) => {
         .finally(() => dispatch(dispatch(setLoader(false))));
 };
 
-export const logout = () => ({ type: 'USER_LOGOUT' });
+export const logout = () => (dispatch) => {
+    dispatch({ type: 'USER_LOGOUT' });
+    document.cookie = 'AUTH=; Max-Age=-99999999;';
+};
 
 export const onLogin = (username, password) => (dispatch) => {
     dispatch(setLoader(true));

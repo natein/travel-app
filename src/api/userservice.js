@@ -5,11 +5,15 @@ const baseUrl = process.env.REACT_APP_API || '';
 export const createNewUser = (username, password, avatar) => {
     const url = `${baseUrl}/users`;
     return axios
-        .post(url, {
-            username,
-            password,
-            logo: avatar,
-        })
+        .post(
+            url,
+            {
+                username,
+                password,
+                logo: avatar,
+            },
+            { withCredentials: true },
+        )
         .then((response) => response.data)
         .catch((err) => {
             console.log(err.response);
@@ -23,9 +27,13 @@ export const createNewUser = (username, password, avatar) => {
 export const login = (username, password) => {
     const url = `${baseUrl}/users/${username}`;
     return axios
-        .post(url, {
-            username,
-            password,
-        })
+        .post(
+            url,
+            {
+                username,
+                password,
+            },
+            { withCredentials: true },
+        )
         .then((response) => response.data);
 };
