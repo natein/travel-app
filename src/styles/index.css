@@ -34,7 +34,6 @@ code {
     }
 }
 
-
 @media (max-width: 450px) {
     .image-gallery-content.left .image-gallery-slide .image-gallery-image,
     .image-gallery-content.right .image-gallery-slide .image-gallery-image {
@@ -43,15 +42,12 @@ code {
     }
 }
 
-
 @media (min-width: 1200px) {
     .image-gallery-content.left .image-gallery-slide .image-gallery-image,
     .image-gallery-content.right .image-gallery-slide .image-gallery-image {
         object-fit: contain !important;
     }
 }
-
-
 
 .image-gallery-content.left .image-gallery-slide .image-gallery-image,
 .image-gallery-content.right .image-gallery-slide .image-gallery-image {
@@ -65,4 +61,17 @@ code {
     max-height: 100vh !important;
     height: auto !important;
     width: 100% !important;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
 }

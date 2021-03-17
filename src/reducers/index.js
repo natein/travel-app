@@ -36,6 +36,9 @@ const commonReducer = (state, action) => {
         case 'USER_LOGOUT': {
             return { ...state, user: null };
         }
+        case 'RATE': {
+            return { ...state, };
+        }
         default: {
             return state;
         }
