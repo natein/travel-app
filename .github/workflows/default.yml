@@ -12,6 +12,7 @@ jobs:
 
       - name: Install and Build
         run: |
+          export PUBLIC_URL=https://natein.github.io/travel-app
           npm ci
           npm run build
 
