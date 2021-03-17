@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import SightGallery from './SightGallery';
 import PropTypes from 'prop-types';
 
-const SightGalleryContainer = ({sights}) => {
+const SightGalleryContainer = ({sights, onSlideChangeHandle}) => {
     const { t } = useTranslation();
-
-    return <SightGallery title={t('labels.sights')} data={sights} />;
+    return <SightGallery onSlideChange = {onSlideChangeHandle} title={t('labels.sights')} data={sights} />;
 };
 
 SightGalleryContainer.propTypes = {
@@ -27,3 +26,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(SightGalleryContainer);
+
+
