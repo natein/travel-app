@@ -13,6 +13,8 @@ import PropTypes from 'prop-types';
 const useStyles = makeStyles((theme) => ({
     loginBtn: {
         marginLeft: '10px',
+        color: 'white',
+        opacity: '0.2',
     },
     avatar: {
         width: '2rem',
