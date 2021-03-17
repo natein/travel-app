@@ -17,8 +17,13 @@
         "speed": "m/s",
         "currency": "Exchange rate",
         "sights": "Popular places",
+        "authError": "Error! You are not authorized",
+        "emptyError": "Error! Empty",
+        "middle": "Average",
         "video": "Video",
+        "vote": "Voted",
         "map": "Location",
+        "raiting": "Show",
         "error": "Page was not found.",
         "developers" : [
               {
