@@ -18,7 +18,7 @@ i18n.use(HttpApi)
             useSuspense: true,
         },
         backend: {
-            loadPath: '/translations/{{lng}}/{{ns}}.json',
+            loadPath: `${process.env.PUBLIC_URL}/translations/{{lng}}/{{ns}}.json`,
         },
     });
 
