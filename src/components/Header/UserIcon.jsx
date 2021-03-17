@@ -14,12 +14,11 @@ const useStyles = makeStyles((theme) => ({
     loginBtn: {
         marginLeft: '10px',
         color: 'white',
-        opacity: '0.2',
     },
     avatar: {
         width: '2rem',
         height: '2rem',
-        borderRadius: '50%'
+        borderRadius: '50%',
     }
 }));
 
