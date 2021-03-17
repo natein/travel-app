@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme) => ({
             padding: 'initial',
             marginBottom: theme.spacing(4),
         },
-        
+
         padding: theme.spacing(0, 10, 0, 0),
     },
 
     widgetBox: {
         padding: theme.spacing(2),
         backgroundColor: '#e2e5f4',
-        marginBottom: theme.spacing(2),   
+        marginBottom: theme.spacing(2),
     },
 
     image: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Country({ country, currency }) {
+function Country({ country }) {
     const classes = useStyles();
     const { t } = useTranslation();
     return (
@@ -69,14 +69,9 @@ function Country({ country, currency }) {
                         <WidgetWeather />
                     </Paper>
 
-                    {
-                        currency
-                            ?
-                            <Paper elevation={0} className={classes.widgetBox}>
-                                <WidgetCurrency />
-                            </Paper>
-                            : ''
-                    }
+                    <Paper elevation={0} className={classes.widgetBox}>
+                        <WidgetCurrency />
+                    </Paper>
 
                     <Paper elevation={0} className={classes.widgetBox}>
                         <WidgetDate />
