@@ -1,9 +1,14 @@
 import { connect } from 'react-redux';
 import WidgetCurrency from './WidgetCurrency';
 import PropTypes from 'prop-types';
+import { Box } from '@material-ui/core';
+import LoadingPage from '../LoadingPage';
 
 const WidgetCurrencyContainer = ({ currency, country }) => (
-    <WidgetCurrency currency={currency} country={country} />
+    <Box position="relative" minWidth="5rem" minHeight="5rem">
+        {!currency && <LoadingPage />}
+        {currency && <WidgetCurrency currency={currency} country={country} />}
+    </Box>
 );
 
 WidgetCurrencyContainer.propTypes = {
