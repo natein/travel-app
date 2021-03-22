@@ -19,7 +19,6 @@ const initialState = {
         id: null,
         average: 0,
         votesCount: 0,
-        current: []
     },
 };
 
