@@ -15,6 +15,12 @@ const initialState = {
     currency: null,
     weather: null,
     user: null,
+    rating: {
+        id: null,
+        average: 0,
+        votesCount: 0,
+        current: []
+    },
 };
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunk, localStorageMiddleware));

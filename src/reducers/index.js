@@ -1,3 +1,5 @@
+import { averageRaiting, hasUser } from '../helpers';
+
 const commonReducer = (state, action) => {
     switch (action.type) {
         case 'LOADER': {
@@ -36,9 +38,38 @@ const commonReducer = (state, action) => {
         case 'USER_LOGOUT': {
             return { ...state, user: null };
         }
-        case 'RATE': {
-            return { ...state, };
+        case 'RATING_INIT': {
+            const [sight] = state.country.sights
+            const { rating, id } = sight;
+            const average = averageRaiting(rating);
+            const votesCount = rating.length;
+            return { ...state, rating: { id, average, votesCount, users: rating } };
         }
+        case 'RATING_SLIDE': {
+            const sight = state.country.sights[action.id]
+            const { rating, id } = sight;
+            const average = averageRaiting(rating);
+            const votesCount = rating.length;
+            return { ...state, rating: { id, average, votesCount, users: rating } };
+        }
+        case 'ADD_STAR': {
+            const sightIdx = state.country.sights.findIndex((e) => e.id === state.rating.id);
+            const sight = state.country.sights[sightIdx];
+            const { id } = sight;
+
+            if (hasUser(sight.rating, action.payload.username)) {
+                const rateIdx = sight.rating.findIndex((e) => e.username === action.payload.username)
+                sight.rating[rateIdx].rate = action.payload.rate;
+            } else {
+                sight.rating = [...sight.rating, action.payload]
+            }
+
+            const average = averageRaiting(sight.rating);
+            const votesCount = sight.rating.length;
+
+            return { ...state, rating: { id, average, votesCount, users: sight.rating } };
+        }
+
         default: {
             return state;
         }

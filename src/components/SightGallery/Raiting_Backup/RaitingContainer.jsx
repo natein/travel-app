@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Raiting from './Raiting';
 import PropTypes from 'prop-types';
-import * as raitingActions from '../../../actions/raitingActions';
+import * as raitingActions from '../../../actions/ratingActions';
 
 const RaitingContainer = ({ sights, user, sightId, raitingHandle }) => {
     return <Raiting rate={raitingHandle} user={user} sights={sights} sightId={sightId} />;

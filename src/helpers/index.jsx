@@ -25,8 +25,7 @@ export function averageRaiting(value = []) {
     );
 }
 
-export const hasUser = (rating, user) => rating.filter((e) => e.username === user).length > 0;
+export const hasUser = (rating=[], user) => rating.filter((e) => e.username === user).length > 0;
 export const findRate = (rating, user) => rating.find((e) => e.username === user).rate;
 export const findUserIdx = (rating, user) => rating.findIndex((x) => x.username === user);
-export const setScrollOff = (state ='hidden') => document.body.style.overflow = state;;
-
+export const setScrollOff = (state = 'hidden') => (document.body.style.overflow = state);

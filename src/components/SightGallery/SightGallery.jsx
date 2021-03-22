@@ -10,11 +10,10 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Raiting from './Raiting/RaitingContainer'
+import Raiting from '../Rating';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 
-
-function SightGallery({ title, data }) {
+function SightGallery({ title, data, onSlideChange }) {
     const galleryOptions = {
         showPlayButton: false,
         thumbnailPosition: 'right',
@@ -46,18 +45,12 @@ function SightGallery({ title, data }) {
     let theme = createMuiTheme();
     theme = responsiveFontSizes(theme);
 
-    const [sightId, setSightId] = React.useState(0);
-
     function renderLeftNav(onClick, disabled) {
         return (
             <button className="image-gallery-icon image-gallery-left-nav" disabled={disabled} onClick={onClick}>
                 <NavigateBeforeIcon className={classes.icon} />
             </button>
         );
-    }
-
-    function onSlideChange(id) {
-        setSightId(id)
     }
 
     function renderRightNav(onClick, disabled) {
@@ -105,7 +98,7 @@ function SightGallery({ title, data }) {
                 onSlide={(id) => onSlideChange(id)}
             />
             <Box my={3}>
-                <Raiting sightId={sightId}/>
+                <Raiting />
             </Box>
         </>
     );

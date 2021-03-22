@@ -51,11 +51,11 @@ function Country({ country }) {
     const { t } = useTranslation();
     return (
         <Box>
-            <Typography variant="h3" gutterBottom>
+            {/* <Typography variant="h3" gutterBottom>
                 {country.name}
-            </Typography>
+            </Typography> */}
 
-            <Grid container>
+            {/* <Grid container>
                 <Grid item xs={12} md={9} className={classes.descriptionGrid}>
                     {<img className={classes.image} src={country.image} alt={country.name} />}
                     <Typography className={classes.capital}>
@@ -77,19 +77,19 @@ function Country({ country }) {
                         <WidgetDate />
                     </Paper>
                 </Grid>
-            </Grid>
+            </Grid> */}
 
             <Box my={5}>
                 <SightGallery />
             </Box>
 
             <Box my={5}>
-                <CountryMap className={classes.countryMap} />
+                {/* <CountryMap className={classes.countryMap} /> */}
             </Box>
 
-            <Box my={5}>
+            {/* <Box my={5}>
                 <Video />
-            </Box>
+            </Box> */}
         </Box>
     );
 }
